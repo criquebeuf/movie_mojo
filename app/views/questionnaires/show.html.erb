@@ -1,0 +1,11 @@
+<h1>Results</h1>
+
+<div style="display: flex">
+  <% @generated_movies.each do |movie| %>
+    <div class="card">
+      <img class="card-img-top" src="https://image.tmdb.org/t/p/w342<%= movie['poster_path']%>" alt="poster" style="width: 100%; height: auto";>
+      <h5 class="card-title"><%= movie['title']%></h5>
+      <p> Release date: <%= movie['release_date']%></p>
+    </div>
+  <% end %>
+</div>
