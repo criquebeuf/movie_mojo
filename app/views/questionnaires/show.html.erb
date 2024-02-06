@@ -1,6 +1,8 @@
 <div class="container mt-3">
   <h1><%= @questionnaire.title %></h1>
-  <% @questionnaire.questions.each do |question| %>
-    <p><%= question.content %></p>
-  <% end %>
+    <% @questionnaire.questions.each do |question| %>
+      <p><%= question.content %></p>
+
+    <% end %>
+
 </div>

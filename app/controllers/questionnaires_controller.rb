@@ -1,6 +1,6 @@
 class QuestionnairesController < ApplicationController
   before_action :set_questionnaire, only: [:show]
-  before_action :set_questions, only: [:create]
+  before_action :set_first_question_and_answer, only: [:create, :show]
 
   def index
     @questionnaires = Questionnaire.all
@@ -11,7 +11,6 @@ class QuestionnairesController < ApplicationController
 
   def new
     @questionnaire = Questionnaire.new
-    # @answer = Answer.new
   end
 
   def create
@@ -19,12 +18,10 @@ class QuestionnairesController < ApplicationController
     @questionnaire.user = current_user
 
     if @questionnaire.save
-      @questions.each do |question|
-        question.questionnaire = @questionnaire
-        question.save
-      end
+      @question.questionnaire = @questionnaire
+      @question.save
 
-      redirect_to questionnaire_path(@questionnaire)
+      redirect_to new_question_answer_path(@question)
     else
       render :new, status: :unprocessable_entity
     end
@@ -40,10 +37,7 @@ class QuestionnairesController < ApplicationController
     @questionnaire = Questionnaire.find(params[:id])
   end
 
-  def set_questions
-    @questions = []
-    Question::QUESTIONS.each do |question|
-      @questions << Question.new(content: question)
-    end
+  def set_first_question
+    @question = Question.new(content: Question::QUESTIONS[0])
   end
 end
