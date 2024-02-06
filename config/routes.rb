@@ -9,13 +9,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-<<<<<<< HEAD
-  resources :questionnaires, only: [:new, :create, :show]
-=======
 
   resources :questionnaires
   resources :questions do
     resources :answers #, only: [:new, :create]
   end
->>>>>>> 2552bc3f540f39e147e9077a0eaa99f2ae8cb5ad
 end

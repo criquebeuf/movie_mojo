@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-class QuestionnairesController < ApplicationController
-=======
 require 'uri'
 require 'net/http'
 require 'json'
@@ -13,7 +10,7 @@ class QuestionnairesController < ApplicationController
   def index
     @questionnaires = Questionnaire.all
   end
-  
+
   def show
     api_key = ENV['TMDB_KEY']
     url = URI("https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&primary_release_date.gte=#{year_start}&primary_release_date.lte=#{year_end}&with_genres=#{genre_id}&vote_average.gte=#{vote_average}")
@@ -38,18 +35,11 @@ class QuestionnairesController < ApplicationController
       puts "No movie found, please take questionnaire again"
     end
   end
->>>>>>> 2552bc3f540f39e147e9077a0eaa99f2ae8cb5ad
 
   def new
     @questionnaire = Questionnaire.new
   end
 
-<<<<<<< HEAD
-  def show
-    @questionnaire = Questionnaire.find(params[:id])
-  end
-
-=======
   def create
     @questionnaire = Questionnaire.new(title: Time.now)
     @questionnaire.user = current_user
@@ -62,6 +52,7 @@ class QuestionnairesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
 
   private
 
@@ -102,5 +93,4 @@ class QuestionnairesController < ApplicationController
   def set_first_question
     @question = Question.new(content: Question::QUESTIONS[0])
   end
->>>>>>> 2552bc3f540f39e147e9077a0eaa99f2ae8cb5ad
 end
