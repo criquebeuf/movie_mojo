@@ -10,7 +10,7 @@ class QuestionnairesController < ApplicationController
   def index
     @questionnaires = Questionnaire.all
   end
-  
+
   def show
     api_key = ENV['TMDB_KEY']
     url = URI("https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&primary_release_date.gte=#{year_start}&primary_release_date.lte=#{year_end}&with_genres=#{genre_id}&vote_average.gte=#{vote_average}")
@@ -52,6 +52,7 @@ class QuestionnairesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
 
   private
 
