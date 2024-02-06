@@ -1,6 +1,6 @@
 class QuestionnairesController < ApplicationController
   before_action :set_questionnaire, only: [:show]
-  before_action :set_first_question_and_answer, only: [:create, :show]
+  before_action :set_first_question, only: [:create, :show]
 
   def index
     @questionnaires = Questionnaire.all
