@@ -1,2 +1,19 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%= content_for(:navbar_class, "navbar-home") %>
+<%= content_for(:banner_class, "banner-home") %>
+
+<div class="banner">
+  <div class="centered">
+  <div class="banner-content text-center">
+    <h1>MovieMojo</h1>
+    <p>Quit overthinking your <br>
+    movie choice and start <br>
+    enjoying the show!</p>
+
+  </div>
+  </div>
+</div>
+
+<div class="container-main">
+  <p>Tired of endless streaming searches? <br>Hit start, answer 5 questions, and get a fantastic suggestion!</p>
+  <div class= "btn-main"><%= link_to "Start now", "#", class: "btn btn-lg btn-primary"  %></div>
+</div>
