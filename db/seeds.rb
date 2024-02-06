@@ -3,10 +3,6 @@
 
 @questionnaire = Questionnaire.create(title: "test", user_id: @user.id )
 
-2.times {
-  @question
-}
-
 # Seeds Pelayo
 
 
