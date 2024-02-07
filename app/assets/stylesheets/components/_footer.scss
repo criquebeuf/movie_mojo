@@ -1,5 +1,5 @@
 .footer {
-  position: bottom;
+  position: absolute;
   background: #000000;
   left: 0;
   bottom: 0;
@@ -19,7 +19,7 @@
 }
 
 .footer-links a {
-  color: rgb(154, 154, 154);
+  color: $red;
   opacity: 0.15;
   text-decoration: none;
   font-size: 24px;
@@ -31,5 +31,5 @@
 }
 
 .footer .fa-heart {
-  color: #D23333;
+  color: $red;
 }

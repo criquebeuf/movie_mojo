@@ -2,19 +2,14 @@
   width: 50px;
   margin-right: 10px;
   top: 20px;
-
 }
 
 .navbar-lewagon .navbar-nav {
+  display: flex;
   align-items: center;
 }
 
 
 .btn-main {
-  margin-top: 40px;
   margin-right: 20px;
-}
-
-.container-fluid {
-  margin-top: 0;
 }
