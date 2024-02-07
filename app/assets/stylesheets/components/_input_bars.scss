@@ -10,14 +10,14 @@
   color: var(--font-color);
   padding: 5px 10px;
   outline: none;
-}
 
-.input-bar::placeholder {
-  color: var(--font-color-sub);
-  opacity: 0.8;
-}
+  .input-bar::placeholder {
+    color: var(--font-color-sub);
+    opacity: 0.8;
+  }
 
-.input-bar:focus {
-  border: 2px solid var(--input-focus);
-}
+  .input-bar:focus {
+    border: 2px solid var(--input-focus);
+  }
 
+}

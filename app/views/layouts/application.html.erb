@@ -27,7 +27,11 @@
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
           <div class="btn-main">
-            <%= link_to "Log in", new_user_session_path, class: "btn btn-dark btn-sm" %>
+            <% if !user_signed_in? %>
+              <%= link_to "Log in", new_user_session_path, class: "magic-button-users" %>
+            <% else %>
+              <%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete}, class: "magic-button-users" %>
+            <% end %>
           </div>
         </li>
         <li class="nav-item dropdown">
