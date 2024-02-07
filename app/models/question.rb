@@ -4,8 +4,13 @@ class Question < ApplicationRecord
 
   QUESTIONS = [
     "What genre do you like?",
-    "You like movies of which decade?"
+    "You like movies of which decade?",
+    "Do you have a favorite director?"
   ]
 
   validates :content, inclusion: { in: QUESTIONS }
+
+  def question_index
+    self.questionnaire.questions.index(self)
+  end
 end

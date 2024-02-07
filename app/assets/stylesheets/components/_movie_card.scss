@@ -11,14 +11,27 @@
   &.secondary{
     filter: blur(8px);
   }
+}
+
+
+.secondary-signed-up:hover{
+  transform: translate(0px, -46px);
+  transition: ease 0.5s;
+  box-shadow: 0px 0px 20px 20px #ffbb763f;
+}
+
+.first-signed-up:hover{
+  transform: translate(0px, 46px);
+  transition: ease 0.5s;
+  box-shadow: 0px 0px 20px 20px #ffbb763f;
 
 }
+
 .secondary:hover{
   filter: blur(0px);
   transform: translate(0px, -30px);
   transition: ease 0.5s;
   box-shadow: none;
-
 }
 
 .result-movie-wrapper{
@@ -34,10 +47,8 @@
   background-size: cover;
   width:400px;
   height: 600px;
-  position: absolute;
+  position: relative;
   filter: blur(8px);
   background-color: $blue;
   box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
-
-
 }

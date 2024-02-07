@@ -66,3 +66,86 @@
   background: linear-gradient(#147EFF, #0F67DA);
   color: white;
 }
+
+
+//magic buttons 👌
+
+.magic-button {
+  text-decoration: none;
+  width: 130px;
+  height: 40px;
+  font-size: 1.1em;
+  cursor: pointer;
+  background-color: $blue;
+  color: $red;
+  border: none;
+  border-radius: 5px;
+  transition: all .4s;
+  padding-top: 2px;
+}
+
+
+.magic-button:hover {
+  text-decoration: none;
+  border-radius: 5px;
+  transform: translateY(-10px);
+  box-shadow: 0 7px 0 -2px #800020,
+    0 15px 0 -4px #BAA679,
+    0 16px 10px -3px #BAA679;
+}
+
+.magic-button:active {
+  text-decoration: none;
+  transition: all 0.2s;
+  transform: translateY(-5px);
+  box-shadow: 0 2px 0 -2px #800020,
+    0 8px 0 -4px #BAA679,
+    0 12px 10px -3px #BAA679;
+}
+
+.magic-form-button-users{
+  --input-focus: #2d8cf0;
+  --font-color: #fefefe;
+  --font-color-sub: #7e7e7e;
+  --bg-color: #111;
+  --main-color: #fefefe;
+  padding: 15px;
+  background: var(--bg-color);
+  gap: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  box-shadow: 3px 3px var(--main-color);
+  margin: 20px;
+  padding-bottom: 20px;
+  text-decoration: none;
+  color:white;
+}
+
+.magic-form-button-users-back{
+  --input-focus: #2d8cf0;
+  --font-color: #fefefe;
+  --font-color-sub: #7e7e7e;
+  --bg-color: #111;
+  --main-color: #fefefe;
+  padding: 5px 10px;
+  background: var(--bg-color);
+  gap: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  box-shadow: 3px 3px var(--main-color);
+  margin-top: 10px;
+  padding-bottom: 20px;
+  text-decoration: none;
+  color: white;
+  width: 450px;
+  height: 40px;
+
+  input:focus {
+    border: 2px solid var(--input-focus);
+  }
+  &.btn:hover{
+    color: $red;
+    border: $red;
+    box-shadow: 4px 4px $red;
+  }
+}
