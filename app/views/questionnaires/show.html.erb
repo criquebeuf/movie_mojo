@@ -7,8 +7,8 @@
 
       <div class="col my-5 mx-2 result-movie-wrapper" data-controller="results">
         <div class="result-movie-card secondary" data-results-target="card" data-action="mouseover->results#mouseEnters mouseleave->results#mouseLeaves">
-        <div class="overlay" style="background-image:url(https://image.tmdb.org/t/p/w342<%= @generated_movies.second['poster_path']%>); background-size: cover; background-position: center;"></div>
-          <h2 class="mx-3 my-3"><%= @generated_movies.second['title']%></h2>
+        <div class="overlay" style="background-image:url(https://image.tmdb.org/t/p/w342<%= @movies.second['poster_path']%>); background-size: cover; background-position: center;"></div>
+          <h2 class="mx-3 my-3"><%= @movies.second['title']%></h2>
               <div class="text-center d-flex align-items-center justify-content-center">
                 <button class="magic-button my-2 d-none text-center" data-results-target="button">
                   <p>Sign up!</p>
@@ -18,18 +18,22 @@
       </div>
 
       <div class="col my-3">
-        <div class="result-movie-card d-flex align-items-start flex-column" style="background-image:url(https://image.tmdb.org/t/p/w342<%= @generated_movies.first['poster_path']%>); background-size: cover; background-position: center;">
-          <h2 class="mx-3 my-3 py-2"><%= @generated_movies.first['title']%></h2>
+        <div class="result-movie-card d-flex align-items-start flex-column" style="background-image:url(https://image.tmdb.org/t/p/w342<%= @movies.first['poster_path']%>); background-size: cover; background-position: center;">
           <div class="movie-info text-start mt-auto mx-3">
-            <%# <p>Release date: <%#= @generated_movies.first['release_date']%>
+            <p class="card-title"><%= @movies.first['title']%> (<%= @movies.first['release_date'][0, 4]%>)</p>
+            <p><%= @movies.first['runtime']%> minutes</p>            <p>
+              <% @movies.first['genres'].each do |genre| %>
+                <%= genre['name'] %>
+              <% end %>
+            </p>
           </div>
         </div>
       </div>
 
       <div class="col my-5 mx-2 result-movie-wrapper" data-controller="results">
         <div class="result-movie-card secondary" data-results-target="card" data-action="mouseover->results#mouseEnters mouseleave->results#mouseLeaves">
-        <div class="overlay" style="background-image:url(https://image.tmdb.org/t/p/w342<%= @generated_movies.third['poster_path']%>); background-size: cover; background-position: center;"></div>
-          <h2 class="mx-3 my-3"><%= @generated_movies.third['title']%></h2>
+        <div class="overlay" style="background-image:url(https://image.tmdb.org/t/p/w342<%= @movies.third['poster_path']%>); background-size: cover; background-position: center;"></div>
+          <h2 class="mx-3 my-3"><%= @movies.third['title']%></h2>
               <div class="text-center d-flex align-items-center justify-content-center">
                 <button class="magic-button my-2 d-none text-center" data-results-target="button">
                   <p>Sign up!</p>
@@ -46,5 +50,3 @@
         <p>Sign up!</p>
       </button>
     </div>
-
-  </div>
