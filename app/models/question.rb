@@ -9,4 +9,8 @@ class Question < ApplicationRecord
   ]
 
   validates :content, inclusion: { in: QUESTIONS }
+
+  def question_index
+    self.questionnaire.questions.index(self)
+  end
 end
