@@ -102,3 +102,20 @@
     0 8px 0 -4px #BAA679,
     0 12px 10px -3px #BAA679;
 }
+
+.magic-button-users{
+  --input-focus: #2d8cf0;
+  --font-color: #fefefe;
+  --font-color-sub: #7e7e7e;
+  --bg-color: #111;
+  --main-color: #fefefe;
+  padding: 15px;
+  background: var(--bg-color);
+  gap: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+  margin: 20px;
+  padding-bottom: 20px;
+  text-decoration: none;
+}

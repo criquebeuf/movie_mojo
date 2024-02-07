@@ -1,7 +1,9 @@
 <div class="container mt-3">
+  <div class="magic-form-answers">
   <h1><%= @question.content %></h1>
-  <%= simple_form_for [@question, @answer] do |f| %>
-    <%= f.input :content %>
-    <%= f.submit "Next", class: "btn btn-primary" %>
+      <%= simple_form_for [@question, @answer] do |f| %>
+        <%= f.input :content %>
+        <%= f.submit "Next", class: "btn btn-primary" %>
+    </div>
   <% end %>
 </div>
