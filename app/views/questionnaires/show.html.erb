@@ -17,11 +17,35 @@
         </div>
       </div>
 
+
       <div class="col my-3">
-        <div class="result-movie-card d-flex align-items-start flex-column" style="background-image:url(https://image.tmdb.org/t/p/w342<%= @generated_movies.first['poster_path']%>); background-size: cover; background-position: center;">
+        <div class="result-movie-card d-flex align-items-start flex-column" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background-image:url(https://image.tmdb.org/t/p/w342<%= @generated_movies.first['poster_path']%>); background-size: cover; background-position: center;">
           <h2 class="mx-3 my-3 py-2"><%= @generated_movies.first['title']%></h2>
           <div class="movie-info text-start mt-auto mx-3">
             <%# <p>Release date: <%#= @generated_movies.first['release_date']%>
+          </div>
+        </div>
+      </div>
+
+<!-- Modal -->
+
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h1>Some text</h1>
+              <h2>second line</h2>
+              <p>Some text</p>
+              <p>some more text</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Watch now!</button>
+            </div>
           </div>
         </div>
       </div>
@@ -37,7 +61,6 @@
             </div>
         </div>
       </div>
-
     </div>
 
     <div class="row d-flex justify-content-around text-center">

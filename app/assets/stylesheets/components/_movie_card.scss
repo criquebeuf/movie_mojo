@@ -1,26 +1,27 @@
-.result-movie-card{
+.result-movie-card {
   height: 600px;
   width: 400px;
   background-size: cover;
   color: white;
-  box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
   font-weight: bolder;
   position: relative;
   transition: ease-out 0.5s;
 
-  &.secondary{
+  &.secondary {
     filter: blur(8px);
   }
 }
-.secondary:hover{
+
+.secondary:hover {
   filter: blur(0px);
   transform: translate(0px, -30px);
   transition: ease 0.5s;
   box-shadow: none;
 }
 
-.result-movie-wrapper{
-  .magic-button{
+.result-movie-wrapper {
+  .magic-button {
     position: absolute;
     top: 50%;
     z-index: 5;
@@ -28,12 +29,12 @@
   }
 }
 
-.overlay{
+.overlay {
   background-size: cover;
-  width:400px;
+  width: 400px;
   height: 600px;
   position: absolute;
   filter: blur(8px);
   background-color: $blue;
-  box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
 }
