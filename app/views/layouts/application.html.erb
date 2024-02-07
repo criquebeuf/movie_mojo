@@ -1,22 +1,21 @@
   <!DOCTYPE html>
   <html>
   <head>
-
-  <title>MovieMojo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <%= javascript_importmap_tags %>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
-< /head>
+    <title>MovieMojo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <%= favicon_link_tag asset_path('MojoIcon.png') %>
+  </head>
 
 <body>
 
-<div class="navbar navbar-expand-sm navbar-dark navbar-lewagon fixed-top" style="background-color: black;">
+<div class="navbar navbar-expand-sm navbar-dark navbar-lewagon" style="background-color: black;">
   <div class="container-fluid">
     <a class="navbar-brand d-flex align-items-center" href="/">
       <%= image_tag "MojoIcon-transformed" %>
@@ -45,7 +44,8 @@
   </div>
 </div>
 
-    <%= yield %>
+
+      <%= yield %>
 
 <div class="footer">
     <div class="footer-links">

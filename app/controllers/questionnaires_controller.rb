@@ -56,17 +56,19 @@ class QuestionnairesController < ApplicationController
 
   private
 
+  ## START: ALGORYTHM METHODS
+
   def year_start
     # TO DO: use release date instead (year does not seem to be the release year)
     # Temp value below
-    year = 2020
+    year = 2022
     "#{year}-01-01"
   end
 
   def year_end
     # TO DO: use release date instead (year does not seem to be the release year)
     # Temp value below
-    year = 2020
+    year = 2022
     "#{year}-12-31"
   end
 
@@ -81,6 +83,8 @@ class QuestionnairesController < ApplicationController
     # Temp value below
     7
   end
+
+  ## END: ALGORYTHM METHODS
 
   def questionnaire_params
     params.require(:questionnaire).permit(:title)
