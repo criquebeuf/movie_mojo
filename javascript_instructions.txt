@@ -1,0 +1,9 @@
+for answers
+
+- Answers#create
+- make the form respond in JSON, with 01. the next question, 02. the next answer's create form and 03. the new form for the previous answer (update form)
+- 01
+- 02. get the html and place it in the place of the previous form
+- 03. get the hmtl and place it before the new form HIDDEN
+
+- Previous button make it so the previous form get displayed and the current one gets hidden
