@@ -28,9 +28,9 @@
         <li class="nav-item">
           <div class="btn-main">
             <% if !user_signed_in? %>
-              <%= link_to "Log in", new_user_session_path, class: "magic-button-users" %>
+              <%= link_to "Log in", new_user_session_path, class: "magic-form-button-users btn" %>
             <% else %>
-              <%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete}, class: "magic-button-users" %>
+              <%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete}, class: "magic-form-button-users btn" %>
             <% end %>
           </div>
         </li>

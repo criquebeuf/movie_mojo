@@ -1,7 +1,9 @@
 class AnswersController < ApplicationController
   before_action :set_question, only: [:new, :create, :edit, :update]
   before_action :set_next_question, only: [:create]
-  before_action :set_questionnaire, only: [:new, :update]
+  before_action :set_questionnaire, only: [:new, :update, :edit]
+  before_action :set_question_index, only: [:new, :edit]
+  before_action :set_previous_stuff, only: [:new, :edit]
 
   def new
     @answer = Answer.new
@@ -39,7 +41,7 @@ class AnswersController < ApplicationController
   end
 
   def set_questionnaire
-    @questionnaire = set_question.questionnaire
+    @questionnaire = @question.questionnaire
   end
 
   def set_question
@@ -56,5 +58,14 @@ class AnswersController < ApplicationController
     else
       redirect_to questionnaire_path(@questionnaire)
     end
+  end
+
+  def set_question_index
+    @question_index = @question.question_index
+  end
+
+  def set_previous_stuff
+    @previous_question = @questionnaire.questions[@question_index - 1]
+    @previous_answer = @previous_question.answer
   end
 end
