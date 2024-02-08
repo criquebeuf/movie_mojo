@@ -1,5 +1,5 @@
-  <!DOCTYPE html>
-  <html>
+<!DOCTYPE html>
+<html>
   <head>
     <title>MovieMojo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,58 +13,72 @@
     <%= favicon_link_tag asset_path('MojoIcon.png') %>
   </head>
 
-<body>
+  <body>
 
-<div class="navbar navbar-expand-sm navbar-dark navbar-lewagon" style="background-color: black;">
-  <div class="container-fluid">
-    <a class="navbar-brand d-flex align-items-center" href="/">
-      <%= image_tag "MojoIcon-transformed" %>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <div class="btn-main">
-            <% if !user_signed_in? %>
-              <%= link_to "Log in", new_user_session_path, class: "magic-form-button-users btn" %>
+    <%# ------- NAVBAR ------- %>
+    <div class="navbar navbar-expand-sm navbar-dark navbar-lewagon" style="background-color: black;">
+      <div class="container-fluid">
+
+        <%# LOGO %>
+        <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
+          <%= image_tag "MojoIcon-transformed" %>
+        <% end %>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto">
+
+            <% if user_signed_in? %>
+
+              <%# DROPDOWN if signed in%>
+              <%# COPIED DROPDOWN %>
+              <div class="sec-center">
+                <input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
+                <label class="for-dropdown" for="dropdown"><%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %><i class="uil fa-solid fa-arrow-down fs-4"></i></label>
+                <div class="section-dropdown">
+                  <%# <a href="#">Dropdown Link <i class="uil uil-arrow-right"></i></a> %>
+                  <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "" do %>
+                    Log out <i class="fa-solid fa-right-from-bracket"></i>
+                  <% end %>
+                </div>
+              </div>
+
             <% else %>
-              <%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete}, class: "magic-form-button-users btn" %>
+
+              <%# Login Button if not signed in %>
+              <li class="nav-item">
+                <div class="btn-main">
+                  <%= link_to "Log in", new_user_session_path, class: "magic-form-button-users btn" %>
+                </div>
+              </li>
+
             <% end %>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <div class="avatar">
-          <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" /> </div>
-          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" data-turbo-method="delete" href="#">Log out</a>
-          </div>
-        </li>
-      </ul>
+
+          </ul>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
+    <%# ------- CONTENT ------- %>
+    <%= yield %>
 
-      <%= yield %>
-
-<div class="footer">
-    <div class="footer-links">
-      <a href="#"><i class="fab fa-github"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-facebook"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-linkedin"></i></a>
+    <%# ------- FOOTER ------- %>
+    <div class="footer">
+      <div class="footer-links">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <div class="footer-copyright">
+        This footer is made with <i class="fas fa-heart"></i> at Le Wagon
+      </div>
     </div>
-  <div class="footer-copyright">
-    This footer is made with <i class="fas fa-heart"></i> at Le Wagon
-  </div>
-  </div>
 
-
-</body>
+  </body>
 
 </html>
