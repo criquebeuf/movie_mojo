@@ -12,10 +12,13 @@ class QuestionnairesController < ApplicationController
   end
 
   def show
+    # Get the five answers
+    @answers = @questionnaire.answers
     # search 1: based on main criteria => return movie_id
     @movie_ids = search_main_params
     # search 2: based on movie_id => return more details (e.g. runtime, actors etc.)
     search_by_movie_id(@movie_ids)
+
   end
 
   def new
@@ -94,29 +97,27 @@ class QuestionnairesController < ApplicationController
   end
 
   def year_start
-    # TO DO: use release date instead (year does not seem to be the release year)
-    # Temp value below
-    year = 2022
+    year = @answers[1].content
     "#{year}-01-01"
   end
 
   def year_end
-    # TO DO: use release date instead (year does not seem to be the release year)
-    # Temp value below
-    year = 2022
+    year = @answers[1].content.to_i + 9
     "#{year}-12-31"
   end
 
   def genre_id
-    # TO DO: retrieve genre_ids from API (https://api.themoviedb.org/3/genre/movie/list?)
-    # Temp value below (array)
-    genres_id = [18, 53]
-    genres_id.join(",")
+    @answers[0].content
+    # genres_id.join(",") # to be added when transformed into multiple select!
   end
 
   def vote_average
     # Temp value below
-    5
+    6
+  end
+
+  def director
+
   end
 
   ## END: ALGORYTHM METHODS
