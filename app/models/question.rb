@@ -53,10 +53,15 @@ class Question < ApplicationRecord
 
   validates :content, inclusion: { in: QUESTIONS.values }
 
+  # get the questions index everytime you call this function
+  # self is the question where this function is called from
+  # the first self isn't mandatory, but better for understanding
   def question_index
     self.questionnaire.questions.index(self)
   end
 
+  # to have the correct selection options in the dropdown in the view, the #
+  # inclusion source is set individually depending on the question
   def inclusion_source
     case QUESTIONS.key(self.content)
     when :genre
