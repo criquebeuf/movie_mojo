@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   resources :questions do
     resources :answers #, only: [:new, :create]
   end
+  resources :movies
 end

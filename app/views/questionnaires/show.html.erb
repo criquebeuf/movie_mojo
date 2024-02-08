@@ -26,7 +26,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Add to watchlist</button>
+            <%= link_to "Add to watchlist", movies_path, data: { turbo_method: :post }, class: "btn btn-primary" %>
           </div>
         </div>
       </div>
@@ -83,6 +83,6 @@
           </button>
         </div>
       <% end %>
-    
+
   </div>
 </div>
