@@ -4,6 +4,40 @@
   <div class="container">
 
 
+  <!-- Modal -->
+  <div class="modal-container">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel"><%= @movies.first['title']%> (<%= @movies.first['release_date'][0, 4]%>)</h5>
+            <%# <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="back"></button> %>
+          </div>
+          <div class="modal-body">
+            <img class="modal-poster" src="https://image.tmdb.org/t/p/w342<%= @movies.first['poster_path']%>">
+            <p>Genres:
+              <% @movies.first['genres'].each do |genre| %>
+                <%= genre['name'] %>
+              <% end %></p>
+
+              <p>Cast:
+              actor 1
+              actor 2
+              actor 3 </p>
+
+              <p>director: director 1</p>
+
+            <p><%= @movies.first['overview']%></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Add to watchlist</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
     <div class="row">
 
@@ -43,28 +77,7 @@
           </div>
       </div>
 
-<!-- Modal -->
 
-      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <h1>Some text</h1>
-              <h2>second line</h2>
-              <p>Some text</p>
-              <p>some more text</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Watch now!</button>
-            </div>
-          </div>
-        </div>
-      </div>
 
 
       <% if !user_signed_in? %>
