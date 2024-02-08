@@ -4,11 +4,13 @@
     <%= simple_form_for [@question, @answer] do |f| %>
       <%= f.input :content %>
       <%= f.button :submit, "Next" %>
-      <% unless @previous_answer %>
-        <%= link_to "Back", root_path, class: "magic-form-button-users-back btn" %>
-      <% else %>
-        <%= link_to "Previous", edit_question_answer_path(@previous_question, @previous_answer), class: "magic-form-button-users-back btn" %>
-      <% end %>
+      <div>
+        <% unless @previous_answer %>
+          <%= link_to "Back", root_path, class: "magic-form-button-users-back btn" %>
+        <% else %>
+          <%= link_to "Previous", edit_question_answer_path(@previous_question, @previous_answer), class: "magic-form-button-users-back btn" %>
+        <% end %>
+      </div>
       </div>
     <% end %>
   </div>

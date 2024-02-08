@@ -3,7 +3,7 @@ require 'net/http'
 require 'json'
 
 class QuestionnairesController < ApplicationController
-  before_action :authenticate_user!, except: [:new, :create]
+#  before_action :authenticate_user!, except: [:new, :create]
   before_action :set_questionnaire, only: [:show]
   before_action :set_first_question, only: [:create, :show]
 
