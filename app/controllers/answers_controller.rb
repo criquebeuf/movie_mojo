@@ -20,6 +20,8 @@ class AnswersController < ApplicationController
     if @next_question
       redirect_to new_question_answer_path(@next_question)
     else
+      # if there is no next question, than go back to the questionnaire and
+      # to show the results
       redirect_to questionnaire_path(@questionnaire)
     end
   end
