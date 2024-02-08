@@ -2,7 +2,7 @@ class AnswersController < ApplicationController
   before_action :set_question, only: [:new, :create, :edit, :update]
   before_action :set_next_question, only: [:create]
   before_action :set_questionnaire, only: [:new, :update, :edit]
-  before_action :set_question_index, only: [:new, :edit]
+  before_action :set_question_index, only: [:new, :edit, :create]
   before_action :set_previous_stuff, only: [:new, :edit]
 
   def new
@@ -16,7 +16,12 @@ class AnswersController < ApplicationController
     # as we have no validators on answer the save will never fail
     # so we don't need an if statement
     @answer.save
-    redirect_to new_question_answer_path(@next_question)
+
+    if @next_question
+      redirect_to new_question_answer_path(@next_question)
+    else
+      redirect_to questionnaire_path(@questionnaire)
+    end
   end
 
   def edit
@@ -31,7 +36,6 @@ class AnswersController < ApplicationController
         redirect_to new_question_answer_path(@questionnaire.questions.last)
       end
     end
-    # raise
   end
 
   private
@@ -51,12 +55,10 @@ class AnswersController < ApplicationController
   def set_next_question
     next_question_idx = set_questionnaire.questions.count
 
-    if next_question_idx <= Question::QUESTIONS.count - 1
-      @next_question = Question.new(content: Question::QUESTIONS[next_question_idx])
+    if next_question_idx <= Question::QUESTIONS.keys.count - 1
+      @next_question = Question.new(content: Question::QUESTIONS.values[next_question_idx])
       @next_question.questionnaire = @questionnaire
       @next_question.save
-    else
-      redirect_to questionnaire_path(@questionnaire)
     end
   end
 

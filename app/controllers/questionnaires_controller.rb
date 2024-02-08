@@ -134,6 +134,6 @@ class QuestionnairesController < ApplicationController
   end
 
   def set_first_question
-    @question = Question.new(content: Question::QUESTIONS[0])
+    @question = Question.new(content: Question::QUESTIONS[:genre])
   end
 end
