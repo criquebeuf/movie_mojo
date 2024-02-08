@@ -3,20 +3,66 @@
   width: 400px;
   background-size: cover;
   color: white;
-  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
   font-weight: bolder;
   position: relative;
   transition: ease-out 0.5s;
 
   &.secondary {
-    filter: blur(8px);
+    //filter: blur(12px);
+    position: relative;
+    .overlay {
+      background-size: cover;
+      width: 400px;
+      height: 600px;
+      position: absolute;
+      filter: blur(12px);
+      background-color: $blue;
+      text-transform: none;
+    }
+    h2{
+      display:none
+    }
+    .visitor-button {
+      position: absolute;
+      top: 50%;
+      z-index: 5;
+      right: 35%;
+      height: 70px;
+    }
+
+  }
+
+}
+
+.secondary-signed-up{
+  h2{
+    display:none
+  }
+  .overlay{
+    background-size: cover;
+    width: 400px;
+    height: 600px;
+    filter:blur(0px);
+
+  }
+  .visitor-button{
+    display:none;
   }
 }
 
 .secondary-signed-up:hover{
-  transform: translate(0px, -46px);
+  transform: translate(0px, -32px);
   transition: ease 0.5s;
   box-shadow: 0px 0px 20px 20px #ffbb763f;
+}
+
+.first-signed-up{
+  h2{
+    display:none;
+  }
+  p{
+    display:none;
+  }
 }
 
 .first-signed-up:hover{
@@ -27,27 +73,11 @@
 }
 
 .secondary:hover{
-  filter: blur(0px);
-  transform: translate(0px, -30px);
+
+  transform: translate(0px, -46px);
   transition: ease 0.5s;
   box-shadow: none;
-}
-
-.result-movie-wrapper {
-  .magic-button {
-    position: absolute;
-    top: 50%;
-    z-index: 5;
-    right: 35%
-  }
-}
-
-.overlay {
-  background-size: cover;
-  width: 400px;
-  height: 600px;
-  position: relative;
-  filter: blur(8px);
-  background-color: $blue;
-  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  .overlay{
+    filter: blur(12px);
+    }
 }
