@@ -24,12 +24,14 @@
           <div class="result-movie-card d-flex align-items-start flex-column" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background-image:url(https://image.tmdb.org/t/p/w342<%= @movies.first.first['poster_path']%>); background-size: cover; background-position: center;">
             <h2 class="mx-3 my-3 py-2"><%= @movies.first['title']%> (<%= @movies.first['release_date'][0, 4]%>)</h2>
             <div class="movie-info text-start mt-auto mx-3">
-              <p><%= @movies.first['runtime']%> minutes</p>
-              <p>
+              <p> Runtime: <%= @movies.first['runtime']%> minutes</p>
+              <p> Director: <%= @movies.first['director']%></p>
+              <p> Actors: <%= @movies.first['actor_first']%>, <%= @movies.first['actor_second']%></p>
+              <p> Genres:
                 <% @movies.first['genres'].each do |genre| %>
                   <%= genre['name'] %>
                 <% end %>
-              </p>          
+              </p>
             </div>
           </div>
         </div>
@@ -92,14 +94,16 @@
 
         <div class="col my-3">
           <div class="result-movie-card first-signed-up d-flex align-items-start flex-column" style="background-image:url(https://image.tmdb.org/t/p/w342<%= @movies.first['poster_path']%>); background-size: cover; background-position: center;">
-            <h2 class="mx-3 my-3 py-2"><%= @movies.first['title']%></h2>
+            <h2 class="mx-3 my-3 py-2"><%= @movies.first['title']%> (<%= @movies.first['release_date'][0, 4]%>)</h2>
             <div class="movie-info text-start mt-auto mx-3">
-              <p><%= @movies.first['runtime']%> minutes</p>
-              <p>
+              <p> Runtime: <%= @movies.first['runtime']%> minutes</p>
+              <p> Director: <%= @movies.first['director']%></p>
+              <p> Actors: <%= @movies.first['actor_first']%>, <%= @movies.first['actor_second']%></p>
+              <p> Genres:
                 <% @movies.first['genres'].each do |genre| %>
                   <%= genre['name'] %>
                 <% end %>
-              </p>  
+              </p>
             </div>
           </div>
         </div>
@@ -115,4 +119,3 @@
     <% end %>
   </div>
 </div>
-
