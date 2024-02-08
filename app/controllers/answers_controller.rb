@@ -2,7 +2,7 @@ class AnswersController < ApplicationController
   before_action :set_question, only: [:new, :create, :edit, :update]
   before_action :set_next_question, only: [:create]
   before_action :set_questionnaire, only: [:new, :update, :edit]
-  before_action :set_question_index, only: [:new, :edit, :create]
+  before_action :set_question_index, only: [:new, :edit]
   before_action :set_previous_stuff, only: [:new, :edit]
 
   def new
