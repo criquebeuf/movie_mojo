@@ -3,7 +3,7 @@ require 'net/http'
 require 'json'
 
 class QuestionnairesController < ApplicationController
-  before_action :authenticate_user!, except: [:new, :create]
+#  before_action :authenticate_user!, except: [:new, :create]
   before_action :set_questionnaire, only: [:show]
   before_action :set_first_question, only: [:create, :show]
 
@@ -130,6 +130,6 @@ class QuestionnairesController < ApplicationController
   end
 
   def set_first_question
-    @question = Question.new(content: Question::QUESTIONS[0])
+    @question = Question.new(content: Question::QUESTIONS[:genre])
   end
 end

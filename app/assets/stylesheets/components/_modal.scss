@@ -1,0 +1,27 @@
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $blue;
+  border-radius: 20px;
+  justify-content: center;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-poster {
+  width: 30%;
+  border-radius: 20px;
+  margin: 10px auto;
+}
+
+.modal-content p {
+  font-size: 18px;
+  text-align: center;
+}
