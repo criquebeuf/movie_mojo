@@ -19,13 +19,8 @@
               <% @movies.first['genres'].each do |genre| %>
                 <%= genre['name'] %>
               <% end %></p>
-
-              <p>Cast:
-              actor 1
-              actor 2
-              actor 3 </p>
-
-              <p>director: director 1</p>
+              <p> Director: <%= @movies.first['director']%></p>
+              <p> Actors: <%= @movies.first['actor_first']%>, <%= @movies.first['actor_second']%></p>
 
             <p><%= @movies.first['overview']%></p>
           </div>
@@ -56,8 +51,10 @@
           <div class="result-movie-card first-signed-up d-flex align-items-start flex-column" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background-image:url(https://image.tmdb.org/t/p/w342<%= @movies.first['poster_path']%>); background-size: cover; background-position: center;">
             <h2 class="mx-3 my-3 py-2"><%= @movies.first['title']%> (<%= @movies.first['release_date'][0, 4]%>)</h2>
             <div class="movie-info text-start mt-auto mx-3">
-              <p><%= @movies.first['runtime']%> minutes</p>
-              <p>
+              <p> Runtime: <%= @movies.first['runtime']%> minutes</p>
+              <p> Director: <%= @movies.first['director']%></p>
+              <p> Actors: <%= @movies.first['actor_first']%>, <%= @movies.first['actor_second']%></p>
+              <p> Genres:
                 <% @movies.first['genres'].each do |genre| %>
                   <%= genre['name'] %>
                 <% end %>
@@ -78,8 +75,6 @@
       </div>
 
 
-
-
       <% if !user_signed_in? %>
         <div class="row d-flex justify-content-around text-center">
           <p>Do you want more accurate recommendations?</p>
@@ -88,6 +83,6 @@
           </button>
         </div>
       <% end %>
-
+    
   </div>
 </div>
