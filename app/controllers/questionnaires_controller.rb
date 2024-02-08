@@ -18,7 +18,6 @@ class QuestionnairesController < ApplicationController
     @movie_ids = search_main_params
     # search 2: based on movie_id => return more details (e.g. runtime, actors etc.)
     search_by_movie_id(@movie_ids)
-
   end
 
   def new
@@ -82,17 +81,32 @@ class QuestionnairesController < ApplicationController
       api_key = ENV['TMDB_KEY']
       url = URI("https://api.themoviedb.org/3/movie/#{id}?language=en-US")
       @movie = search_setup(url, api_key)
-      # Returns director info
+
+      # Returns credits (cast and crew)
       url_crew = URI("https://api.themoviedb.org/3/movie/#{id}/credits?language=en-US")
       result = search_setup(url_crew, api_key)
       @crew = result['crew']
+      @cast = result['cast']
+
+      # Show movie info in modal
       director = @crew.find { |member| member['job'] == "Director" }
-      @movie['director'] = director['name'] if director
-      # Returns actors info
+      @movie['director'] = result['director'] if director
       @movie['actor_first'] = result['cast'][0]['name']
       @movie['actor_second'] = result['cast'][1]['name']
+
+      # Weight each user criteria
+      @movie['counter'] = 0
+      # Director
+      @movie['counter'] += 1 if !@answers[2].content.empty? && @crew.any? { |member| member['name'].downcase.include?(@answers[2].content.downcase) }
+      # Actors
+      @movie['counter'] += 1 if !@answers[3].content.empty? && @cast.any? { |member| member['name'].downcase.include?(@answers[3].content.downcase) }
+      # Runtime
+      @movie['counter'] -= 1 if (@movie['runtime']).to_i > @answers[1].content.to_i
+
       @movies << @movie
     end
+
+    @movies.sort_by! { |movie| -movie['counter'] }
     @movies
   end
 
@@ -114,10 +128,6 @@ class QuestionnairesController < ApplicationController
   def vote_average
     # Temp value below
     6
-  end
-
-  def director
-
   end
 
   ## END: ALGORYTHM METHODS
