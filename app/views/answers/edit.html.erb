@@ -2,7 +2,7 @@
   <div class="magic-form-answers">
     <h2><%= @question.content %></h2>
     <%= simple_form_for [@question, @answer] do |f| %>
-      <%= f.input :content %>
+      <%= f.input :content, collection: @question.inclusion_source %>
       <%= f.button :submit, "Next", class: "btn btn-primary" %>
       <% unless @previous_answer %>
         <%= link_to "Back", root_path, class: "btn btn-primary" %>
