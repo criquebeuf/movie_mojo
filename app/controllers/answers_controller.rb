@@ -31,10 +31,14 @@ class AnswersController < ApplicationController
   end
 
   def update
+    # the previous functionality is basically just an edit / update process
+    # so if the answer can be updated
     if @question.answer.update(answer_params)
       if @questionnaire.questions.last.answer.present?
+        # if the last answer is present, redirect to this answer and edit it
         redirect_to edit_question_answer_path(@questionnaire.questions.last.answer)
       else
+        # if the last answer is not present, redirect to the last question
         redirect_to new_question_answer_path(@questionnaire.questions.last)
       end
     end
@@ -55,10 +59,15 @@ class AnswersController < ApplicationController
   end
 
   def set_next_question
+    # the index is basically the number of questions in the questionnaire
     next_question_idx = set_questionnaire.questions.count
 
     if next_question_idx <= Question::QUESTIONS.keys.count - 1
+      # if the index is equal to the overall number of questions (5, 6), then
+      # take the next question from the hash
       @next_question = Question.new(content: Question::QUESTIONS.values[next_question_idx])
+
+      # assign the question to the same questionnaire
       @next_question.questionnaire = @questionnaire
       @next_question.save
     end
