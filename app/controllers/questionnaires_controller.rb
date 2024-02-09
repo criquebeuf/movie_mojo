@@ -113,13 +113,11 @@ class QuestionnairesController < ApplicationController
     @movies.sort_by! { |movie| -movie['counter'] }
     # Debugging
     puts "answers: Genre: #{@answers[0].content} Decade: #{@answers[1].content} Director: #{@answers[2].content} Actor: #{@answers[3].content} Runtime_max: #{@answers[4].content} "
-
-  @movies
-
+    @movies
   end
 
   def year_start
-    if  @answers[1].content.present?
+    if @answers[1].content.present?
       year = @answers[1].content
     else
       year = 1980
