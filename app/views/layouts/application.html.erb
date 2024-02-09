@@ -13,7 +13,7 @@
     <%= favicon_link_tag asset_path('MojoIcon.png') %>
   </head>
 
-  <body>
+  <body class="page-container">
 
     <%# ------- NAVBAR ------- %>
     <div class="navbar navbar-expand-sm navbar-dark navbar-lewagon" style="background-color: black;">
@@ -22,6 +22,7 @@
         <%# LOGO %>
         <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
           <%= image_tag "MojoIcon-transformed" %>
+          <h3 class="navbar-title">MovieMojo</h3>
         <% end %>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,8 +64,9 @@
     </div>
 
     <%# ------- CONTENT ------- %>
-    <%= yield %>
-
+    <div>
+      <%= yield %>
+    </div>
     <%# ------- FOOTER ------- %>
     <div class="footer">
       <div class="footer-links">
@@ -75,7 +77,7 @@
         <a href="#"><i class="fab fa-linkedin"></i></a>
       </div>
       <div class="footer-copyright">
-        MovieMojo © 2024
+        Welcome to the heart <i class="fas fa-heart"></i> of movies
       </div>
     </div>
 
