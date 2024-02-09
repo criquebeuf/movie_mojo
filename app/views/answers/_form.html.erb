@@ -1,0 +1,16 @@
+<div class="container mt-3">
+  <div class="magic-form-answers">
+    <h2><%= @question.content %></h2>
+    <%= simple_form_for [@question, @answer] do |f| %>
+      <%= f.input :content, collection: @question.inclusion_source %>
+      <%= f.button :submit, "Next" %>
+      <div>
+        <% unless @previous_answer %>
+          <%= link_to "Back", root_path, class: "magic-form-button-users-back btn" %>
+        <% else %>
+          <%= link_to "Previous", edit_question_answer_path(@previous_question, @previous_answer), class: "magic-form-button-users-back btn" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
