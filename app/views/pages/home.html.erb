@@ -4,15 +4,12 @@
 <div class="banner">
   <div class="centered">
   <div class="banner-content text-center">
+    <%= image_tag("MojoIcon-transformed.png")%>
     <h1>MovieMojo</h1>
     <p>Quit overthinking your <br>
-    movie choice and start <br>
-    enjoying the show!</p>
+      movie choice and start <br>
+      enjoying the show!</p>
+     <div><%= button_to "Start now", questionnaires_path, data: { turbo_method: :post }, class: "visitor-button" %></div>
   </div>
   </div>
-</div>
-
-<div class="container-main">
-  <p>Tired of streaming searches? <br>Say goodbye to the endless search and hello to movie magic!</p>
-  <div><%= button_to "My Movie Match", questionnaires_path, data: { turbo_method: :post }, class: "visitor-button" %></div>
 </div>
