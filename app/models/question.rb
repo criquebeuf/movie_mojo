@@ -3,11 +3,11 @@ class Question < ApplicationRecord
   has_one :answer, dependent: :destroy
 
   QUESTIONS = {
-    genre: "What genre do you like?",
-    decade: "You like movies of which decade?",
-    director: "Do you have a favorite director?",
-    actor: "Do you have an favorite actor?",
-    runtime: "How much time do you have?"
+    genre: "What are you in the mood for?",
+    decade: "Which decade are you in the mood for today?",
+    director: "If you have a favorite director, feel free to share, otherwise, you can skip this part.",
+    actor: "If you have a favorite actor or actress, feel free to share, otherwise, you can skip this part.",
+    runtime: "How much time do you have today?"
   }
 
   GENRES = {
@@ -44,11 +44,11 @@ class Question < ApplicationRecord
   }
 
   RUNTIMES = {
-    "up to 30" => 30,
-    "up to 1h" => 60,
-    "up to 1.5h" => 90,
-    "up to 2h" => 120,
-    "all night long" => 999
+    "Less than 30 minutes" => 30,
+    "up to 1 hour" => 60,
+    "up to 2 hours" => 120,
+    "3 hours or so" => 180,
+    "All night long!" => 999
   }
 
   validates :content, inclusion: { in: QUESTIONS.values }

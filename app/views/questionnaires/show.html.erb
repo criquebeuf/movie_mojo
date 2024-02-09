@@ -1,7 +1,4 @@
-<h1 class="mx-3 my-3">MovieMojo</h1>
-<h3 class= "mx-3 my-3">Here are our recommendations for you:</h3>
-
-  <div class="container">
+  <div class="container my-5">
 
 
   <!-- Modal -->
@@ -21,11 +18,12 @@
               <% end %></p>
               <p> Director: <%= @movies.first['director']%></p>
               <p> Actors: <%= @movies.first['actor_first']%>, <%= @movies.first['actor_second']%></p>
+
             <p><%= @movies.first['overview']%></p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <%= link_to "Add to watchlist", movies_path, data: { turbo_method: :post }, class: "btn btn-primary" %>
+            <button type="button" class="btn btn-primary">Add to watchlist</button>
           </div>
         </div>
       </div>

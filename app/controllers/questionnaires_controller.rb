@@ -119,7 +119,7 @@ class QuestionnairesController < ApplicationController
   end
 
   def year_start
-    if  @answers[1].content.present?
+    if @answers[1].content.present?
       year = @answers[1].content
     else
       year = 1980
