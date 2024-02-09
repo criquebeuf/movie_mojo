@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+  # before_action :set_questionnaire, only: [:create]
 
   def add_to_watchlist
     @movie = Movie.find(params[:id])
@@ -13,7 +14,7 @@ class MoviesController < ApplicationController
   end
 
   def create
-    raise
+    @movies = current_user.questionnaires.last.results
     @movie_db = Movie.new(title: "MovieMojo")
     if @movie_db.save
       @watched_movie = WatchedMovie.new
@@ -23,5 +24,12 @@ class MoviesController < ApplicationController
     else
       render :new
     end
+    raise
+  end
+
+  private
+
+  def set_questionnaire
+    @questionnaire = Questionnaire.find(params[:id])
   end
 end

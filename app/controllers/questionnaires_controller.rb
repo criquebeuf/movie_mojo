@@ -17,8 +17,10 @@ class QuestionnairesController < ApplicationController
     # search 1: based on main criteria => return movie_id
     @movie_ids = search_main_params
     # search 2: based on movie_id => return more details (e.g. runtime, actors etc.)
-    search_by_movie_id(@movie_ids)
-
+    # @questionnaire.results = search_by_movie_id(@movie_ids)
+    search_by_movie_id(@movie_ids).each do |movie|
+      @questionnaire.results << movie
+    end
   end
 
   def new
