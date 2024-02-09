@@ -112,17 +112,29 @@ class QuestionnairesController < ApplicationController
   end
 
   def year_start
-    year = @answers[1].content
+    if  @answers[1].content.present?
+      year = @answers[1].content
+    else
+      year = 1980
+    end
     "#{year}-01-01"
   end
 
   def year_end
-    year = @answers[1].content.to_i + 9
+    if  @answers[1].content.present?
+      year = @answers[1].content.to_i + 9
+    else
+      year = (Date.today.year) - 1
+    end
     "#{year}-12-31"
   end
 
   def genre_id
-    @answers[0].content
+    if @answers[0].content.present?
+      @answers[0].content
+    else
+      35
+    end
     # genres_id.join(",") # to be added when transformed into multiple select!
   end
 
