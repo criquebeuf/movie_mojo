@@ -21,6 +21,7 @@ class QuestionnairesController < ApplicationController
     search_by_movie_id(@movie_ids).each do |movie|
       @questionnaire.results << movie
     end
+
   end
 
   def new
@@ -80,46 +81,70 @@ class QuestionnairesController < ApplicationController
   def search_by_movie_id(movie_ids)
     @movies = []
     movie_ids.each do |id|
-      # Returns main data
+      # Returns movies with main data
       api_key = ENV['TMDB_KEY']
       url = URI("https://api.themoviedb.org/3/movie/#{id}?language=en-US")
       @movie = search_setup(url, api_key)
-      # Returns director info
+
+      # Returns credits (cast and crew)
       url_crew = URI("https://api.themoviedb.org/3/movie/#{id}/credits?language=en-US")
       result = search_setup(url_crew, api_key)
       @crew = result['crew']
+      @cast = result['cast']
+
+      # Show movie info in modal
       director = @crew.find { |member| member['job'] == "Director" }
       @movie['director'] = director['name'] if director
-      # Returns actors info
+      # to be refactored with loop/check if exists (not working for documentaries)
       @movie['actor_first'] = result['cast'][0]['name']
       @movie['actor_second'] = result['cast'][1]['name']
+
+      # Weight each user criteria
+      @movie['counter'] = 0
+      # Director
+      @movie['counter'] += 1 if @answers[2].content.present? && @crew.any? { |member| member['name'].downcase.include?(@answers[2].content.downcase) }
+      # Actors
+      @movie['counter'] += 1 if @answers[3].content.present? && @cast.any? { |member| member['name'].downcase.include?(@answers[3].content.downcase) }
+      # Runtime
+      @movie['counter'] += 1 if @movie['runtime'] < @answers[4].content.to_i
+
       @movies << @movie
     end
-    @movies
+    @movies.sort_by! { |movie| -movie['counter'] }
+    # Debugging
+    puts "answers: Genre: #{@answers[0].content} Decade: #{@answers[1].content} Director: #{@answers[2].content} Actor: #{@answers[3].content} Runtime_max: #{@answers[4].content} "
   end
 
   def year_start
-    year = @answers[1].content
+    if  @answers[1].content.present?
+      year = @answers[1].content
+    else
+      year = 1980
+    end
     "#{year}-01-01"
   end
 
   def year_end
-    year = @answers[1].content.to_i + 9
+    if  @answers[1].content.present?
+      year = @answers[1].content.to_i + 9
+    else
+      year = (Date.today.year) - 1
+    end
     "#{year}-12-31"
   end
 
   def genre_id
-    @answers[0].content
+    if @answers[0].content.present?
+      @answers[0].content
+    else
+      35
+    end
     # genres_id.join(",") # to be added when transformed into multiple select!
   end
 
   def vote_average
     # Temp value below
-    6
-  end
-
-  def director
-
+    6.5
   end
 
   ## END: ALGORYTHM METHODS
