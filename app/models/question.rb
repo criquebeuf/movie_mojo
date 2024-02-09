@@ -5,8 +5,8 @@ class Question < ApplicationRecord
   QUESTIONS = {
     genre: "What are you in the mood for?",
     decade: "Which decade are you in the mood for today?",
-    director: "If you have a favorite director, feel free to share, otherwise, you can skip this part.",
-    actor: "If you have a favorite actor or actress, feel free to share, otherwise, you can skip this part.",
+    director: "If you have a favorite director, feel free to share.",
+    actor: "If you have a favorite actor or actress, feel free to share.",
     runtime: "How much time do you have today?"
   }
 
