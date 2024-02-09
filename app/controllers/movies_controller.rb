@@ -24,7 +24,7 @@ class MoviesController < ApplicationController
     else
       render :new
     end
-    raise
+    # raise
   end
 
   private

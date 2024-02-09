@@ -18,10 +18,12 @@ class QuestionnairesController < ApplicationController
     @movie_ids = search_main_params
     # search 2: based on movie_id => return more details (e.g. runtime, actors etc.)
     # @questionnaire.results = search_by_movie_id(@movie_ids)
-    search_by_movie_id(@movie_ids).each do |movie|
+    @movies = search_by_movie_id(@movie_ids)
+    @movies.each do |movie|
       @questionnaire.results << movie
     end
-
+    # @questionnaire.save
+    # raise
   end
 
   def new
@@ -113,6 +115,7 @@ class QuestionnairesController < ApplicationController
     @movies.sort_by! { |movie| -movie['counter'] }
     # Debugging
     puts "answers: Genre: #{@answers[0].content} Decade: #{@answers[1].content} Director: #{@answers[2].content} Actor: #{@answers[3].content} Runtime_max: #{@answers[4].content} "
+    @movies
   end
 
   def year_start

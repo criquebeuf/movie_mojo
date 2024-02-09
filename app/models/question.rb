@@ -16,17 +16,17 @@ class Question < ApplicationRecord
     animation: 16,
     comedy: 35,
     crime: 80,
-    documentary: 99,
+    # documentary: 99,
     drama: 18,
     family: 10751,
     fantasy: 14,
     history: 36,
     horror: 27,
-    music: 10402,
+    # music: 10402,
     mystery: 9648,
     romance: 10749,
-    science_Fiction: 878,
-    tv_movie: 10770,
+    science_fiction: 878,
+    # tv_movie: 10770,
     thriller: 53,
     war: 10752,
     western: 37
@@ -53,6 +53,10 @@ class Question < ApplicationRecord
 
   validates :content, inclusion: { in: QUESTIONS.values }
 
+  def genre_for_select
+    GENRES.transform_keys { |key| key.to_s.titleize }
+  end
+
   # get the questions index everytime you call this function
   # self is the question where this function is called from
   # the first self isn't mandatory, but better for understanding
@@ -65,7 +69,8 @@ class Question < ApplicationRecord
   def inclusion_source
     case QUESTIONS.key(self.content)
     when :genre
-      inclusion_source = GENRES
+      puts genre_for_select
+      inclusion_source = genre_for_select
     when :decade
       inclusion_source = DECADES
     when :runtime
