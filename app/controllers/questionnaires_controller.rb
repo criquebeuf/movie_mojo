@@ -14,16 +14,15 @@ class QuestionnairesController < ApplicationController
   def show
     # Get the five answers
     @answers = @questionnaire.answers
+
     # search 1: based on main criteria => return movie_id
     @movie_ids = search_main_params
+
     # search 2: based on movie_id => return more details (e.g. runtime, actors etc.)
-    # @questionnaire.results = search_by_movie_id(@movie_ids)
     @movies = search_by_movie_id(@movie_ids)
-    @movies.each do |movie|
-      @questionnaire.results << movie
-    end
-    # @questionnaire.save
-    # raise
+
+    # store it in the results of the questionnaire to access it later in the watchlist
+    @questionnaire.update(results: @movies)
   end
 
   def new
