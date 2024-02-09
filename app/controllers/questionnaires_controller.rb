@@ -77,7 +77,7 @@ class QuestionnairesController < ApplicationController
   def search_by_movie_id(movie_ids)
     @movies = []
     movie_ids.each do |id|
-      # Returns main data
+      # Returns movies with main data
       api_key = ENV['TMDB_KEY']
       url = URI("https://api.themoviedb.org/3/movie/#{id}?language=en-US")
       @movie = search_setup(url, api_key)
@@ -90,24 +90,25 @@ class QuestionnairesController < ApplicationController
 
       # Show movie info in modal
       director = @crew.find { |member| member['job'] == "Director" }
-      @movie['director'] = result['director'] if director
+      @movie['director'] = director['name'] if director
+      # to be refactored with loop/check if exists (not working for documentaries)
       @movie['actor_first'] = result['cast'][0]['name']
       @movie['actor_second'] = result['cast'][1]['name']
 
       # Weight each user criteria
       @movie['counter'] = 0
       # Director
-      @movie['counter'] += 1 if !@answers[2].content.empty? && @crew.any? { |member| member['name'].downcase.include?(@answers[2].content.downcase) }
+      @movie['counter'] += 1 if @answers[2].content.present? && @crew.any? { |member| member['name'].downcase.include?(@answers[2].content.downcase) }
       # Actors
-      @movie['counter'] += 1 if !@answers[3].content.empty? && @cast.any? { |member| member['name'].downcase.include?(@answers[3].content.downcase) }
+      @movie['counter'] += 1 if @answers[3].content.present? && @cast.any? { |member| member['name'].downcase.include?(@answers[3].content.downcase) }
       # Runtime
-      @movie['counter'] -= 1 if (@movie['runtime']).to_i > @answers[1].content.to_i
+      @movie['counter'] += 1 if @movie['runtime'] < @answers[4].content.to_i
 
       @movies << @movie
     end
-
     @movies.sort_by! { |movie| -movie['counter'] }
-    @movies
+    # Debugging
+    puts "answers: Genre: #{@answers[0].content} Decade: #{@answers[1].content} Director: #{@answers[2].content} Actor: #{@answers[3].content} Runtime_max: #{@answers[4].content} "
   end
 
   def year_start
@@ -127,7 +128,7 @@ class QuestionnairesController < ApplicationController
 
   def vote_average
     # Temp value below
-    6
+    6.5
   end
 
   ## END: ALGORYTHM METHODS
