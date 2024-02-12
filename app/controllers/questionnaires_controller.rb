@@ -99,6 +99,7 @@ class QuestionnairesController < ApplicationController
       # to be refactored with loop/check if exists (not working for documentaries)
       @movie['actor_first'] = result['cast'][0]['name']
       @movie['actor_second'] = result['cast'][1]['name']
+      @movie['poster_path'] = "https://image.tmdb.org/t/p/w342#{@movie['poster_path']}"
 
       # Weight each user criteria
       @movie['counter'] = 0
