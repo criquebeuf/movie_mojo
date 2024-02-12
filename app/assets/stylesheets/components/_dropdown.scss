@@ -10,8 +10,9 @@
   text-align: center;
   z-index: 200;
 }
-[type="checkbox"]:checked,
-[type="checkbox"]:not(:checked){
+
+.dropdown[type="checkbox"]:checked,
+.dropdown[type="checkbox"]:not(:checked){
   position: absolute;
   left: -9999px;
   opacity: 0;
@@ -157,7 +158,6 @@ a {
 
 a:hover {
   color: white;
-  background-color: $blue;
 }
 
 a .uil {
