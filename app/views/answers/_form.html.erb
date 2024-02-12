@@ -2,7 +2,7 @@
   <div class="magic-form-answers <%= 'previous' if params[:previous] %>", data-controller="question">
     <h2><%= @question.content %></h2>
     <%= simple_form_for [@question, @answer] do |f| %>
-      <%= f.input :content, collection: @question.inclusion_source, input_html: { data: { action: "input->question#storeData" } } %>
+      <%= f.input :content, collection: @question.inclusion_source, input_html: { data: { action: "input->question#storeData", question_target: "answer" } } %>
       <%= f.button :submit, "Next", data: { action: "click->question#next" } %>
       <div>
         <% unless @previous_answer %>
