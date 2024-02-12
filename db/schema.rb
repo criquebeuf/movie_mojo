@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_08_172158) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_12_115536) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,20 +24,24 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_08_172158) do
 
   create_table "movies", force: :cascade do |t|
     t.string "title"
-    t.integer "year"
     t.text "overview"
-    t.string "image"
+    t.string "poster_path"
     t.float "rating_api"
     t.float "rating_user"
     t.text "comment_user"
-    t.date "date"
+    t.date "date_added"
     t.string "genres"
     t.boolean "adult"
-    t.string "language"
+    t.string "original_language"
     t.date "release_date"
     t.integer "runtime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "director"
+    t.string "actor_first"
+    t.string "actor_second"
+    t.integer "id_tmdb"
+    t.string "id_imdb"
   end
 
   create_table "questionnaires", force: :cascade do |t|
@@ -65,6 +69,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_08_172158) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

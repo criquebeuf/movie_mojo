@@ -1,3 +1,5 @@
+# Using free API: https://www.themoviedb.org/
+
 require 'uri'
 require 'net/http'
 require 'json'
@@ -14,16 +16,15 @@ class QuestionnairesController < ApplicationController
   def show
     # Get the five answers
     @answers = @questionnaire.answers
+
     # search 1: based on main criteria => return movie_id
     @movie_ids = search_main_params
+
     # search 2: based on movie_id => return more details (e.g. runtime, actors etc.)
-    # @questionnaire.results = search_by_movie_id(@movie_ids)
     @movies = search_by_movie_id(@movie_ids)
-    @movies.each do |movie|
-      @questionnaire.results << movie
-    end
-    # @questionnaire.save
-    # raise
+
+    # store it in the results of the questionnaire to access it later in the watchlist
+    @questionnaire.update(results: @movies)
   end
 
   def new
@@ -48,6 +49,10 @@ class QuestionnairesController < ApplicationController
   private
 
   ## START: ALGORYTHM METHODS
+
+  def complete_list(movie)
+    puts "Movie: #{movie['id']} - #{movie['title']} #{@movie['counter']}"
+  end
 
   def search_setup(url, api_key)
     http = Net::HTTP.new(url.host, url.port)
@@ -82,11 +87,14 @@ class QuestionnairesController < ApplicationController
 
   def search_by_movie_id(movie_ids)
     @movies = []
+    # Debug user answers
+    puts "ANSWERS: Genre: #{@answers[0].content} Decade: #{@answers[1].content} Director: #{@answers[2].content} Actor: #{@answers[3].content} Runtime_max: #{@answers[4].content} "
     movie_ids.each do |id|
       # Returns movies with main data
       api_key = ENV['TMDB_KEY']
       url = URI("https://api.themoviedb.org/3/movie/#{id}?language=en-US")
       @movie = search_setup(url, api_key)
+
 
       # Returns credits (cast and crew)
       url_crew = URI("https://api.themoviedb.org/3/movie/#{id}/credits?language=en-US")
@@ -100,6 +108,7 @@ class QuestionnairesController < ApplicationController
       # to be refactored with loop/check if exists (not working for documentaries)
       @movie['actor_first'] = result['cast'][0]['name']
       @movie['actor_second'] = result['cast'][1]['name']
+      @movie['poster_path'] = "https://image.tmdb.org/t/p/w342#{@movie['poster_path']}"
 
       # Weight each user criteria
       @movie['counter'] = 0
@@ -111,11 +120,10 @@ class QuestionnairesController < ApplicationController
       @movie['counter'] += 1 if @movie['runtime'] < @answers[4].content.to_i
 
       @movies << @movie
+      # see complete list of movies (not only 3 first)
+      complete_list(@movie)
     end
-    @movies.sort_by! { |movie| -movie['counter'] }
-    # Debugging
-    puts "answers: Genre: #{@answers[0].content} Decade: #{@answers[1].content} Director: #{@answers[2].content} Actor: #{@answers[3].content} Runtime_max: #{@answers[4].content} "
-    @movies
+    @movies.sort_by.with_index { |movie, index| [-movie['counter'], index] }
   end
 
   def year_start

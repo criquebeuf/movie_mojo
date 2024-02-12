@@ -1,18 +1,18 @@
 <div class="container mt-3 position-relative" data-controller='loader'>
-  <div class="magic-form-answers neat-screen blurry-screen">
+  <div class="magic-form-answers neat-screen blurry-screen <%= 'previous' if params[:previous] %>", data-controller="question">
     <h2><%= @question.content %></h2>
     <%= simple_form_for [@question, @answer] do |f| %>
-      <%= f.input :content, collection: @question.inclusion_source %>
+      <%= f.input :content, collection: @question.inclusion_source, input_html: { data: { action: "input->question#storeData" } } %>
       <% if Question::QUESTIONS.key(@question.content) == :runtime %>
         <span data-action='click->loader#loadingPage'><%= f.button :submit, "Next" %></span>
       <% else %>
-        <%= f.button :submit, "Next" %>
+        <%= f.button :submit, "Next", data: { action: "click->question#next" } %>
       <% end %>
       <div>
         <% unless @previous_answer %>
           <%= link_to "Back", root_path, class: "magic-form-button-users-back btn" %>
         <% else %>
-          <%= link_to "Previous", edit_question_answer_path(@previous_question, @previous_answer), class: "magic-form-button-users-back btn" %>
+          <%= link_to "Previous", edit_question_answer_path(@previous_question, @previous_answer, previous: true), class: "magic-form-button-users-back btn", data: { action: "click->question#previous" } %>
         <% end %>
       </div>
     <% end %>
