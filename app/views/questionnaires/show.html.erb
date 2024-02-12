@@ -19,13 +19,16 @@
               <p> Director: <%= @movies.first['director']%></p>
               <p> Actors: <%= @movies.first['actor_first']%>, <%= @movies.first['actor_second']%></p>
               <p> Runtime: <%= @movies.first['runtime']%> minutes</p>
-
             <p><%= @movies.first['overview']%></p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <%# <button type="button" class="btn btn-primary">Add to watchlist</button> %>
-            <%= button_to "Add to watchlist", movies_path, data: { turbo_method: :post }, class: "visitor-button" %>
+            <% if user_signed_in? %>
+              <%= button_to "Add to watchlist", movies_path, data: { turbo_method: :post }, class: "visitor-button" %>
+            <% else %>
+              <%= link_to "Add to watchlist", new_user_registration_path, class: "visitor-button"%>
+            <% end %>
           </div>
         </div>
       </div>
