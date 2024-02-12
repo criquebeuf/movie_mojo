@@ -1,3 +1,5 @@
+# Using free API: https://www.themoviedb.org/
+
 require 'uri'
 require 'net/http'
 require 'json'
@@ -48,6 +50,10 @@ class QuestionnairesController < ApplicationController
 
   ## START: ALGORYTHM METHODS
 
+  def complete_list(movie)
+    puts "Movie: #{movie['id']} - #{movie['title']} #{@movie['counter']}"
+  end
+
   def search_setup(url, api_key)
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
@@ -81,11 +87,14 @@ class QuestionnairesController < ApplicationController
 
   def search_by_movie_id(movie_ids)
     @movies = []
+    # Debug user answers
+    puts "ANSWERS: Genre: #{@answers[0].content} Decade: #{@answers[1].content} Director: #{@answers[2].content} Actor: #{@answers[3].content} Runtime_max: #{@answers[4].content} "
     movie_ids.each do |id|
       # Returns movies with main data
       api_key = ENV['TMDB_KEY']
       url = URI("https://api.themoviedb.org/3/movie/#{id}?language=en-US")
       @movie = search_setup(url, api_key)
+
 
       # Returns credits (cast and crew)
       url_crew = URI("https://api.themoviedb.org/3/movie/#{id}/credits?language=en-US")
@@ -111,11 +120,10 @@ class QuestionnairesController < ApplicationController
       @movie['counter'] += 1 if @movie['runtime'] < @answers[4].content.to_i
 
       @movies << @movie
+      # see complete list of movies (not only 3 first)
+      complete_list(@movie)
     end
-    @movies.sort_by! { |movie| -movie['counter'] }
-    # Debugging
-    puts "answers: Genre: #{@answers[0].content} Decade: #{@answers[1].content} Director: #{@answers[2].content} Actor: #{@answers[3].content} Runtime_max: #{@answers[4].content} "
-    @movies
+    @movies.sort_by.with_index { |movie, index| [-movie['counter'], index] }
   end
 
   def year_start
