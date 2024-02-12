@@ -24,20 +24,24 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_12_115536) do
 
   create_table "movies", force: :cascade do |t|
     t.string "title"
-    t.integer "year"
     t.text "overview"
-    t.string "image"
+    t.string "poster_path"
     t.float "rating_api"
     t.float "rating_user"
     t.text "comment_user"
-    t.date "date"
+    t.date "date_added"
     t.string "genres"
     t.boolean "adult"
-    t.string "language"
+    t.string "original_language"
     t.date "release_date"
     t.integer "runtime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "director"
+    t.string "actor_first"
+    t.string "actor_second"
+    t.integer "id_tmdb"
+    t.string "id_imdb"
   end
 
   create_table "questionnaires", force: :cascade do |t|
