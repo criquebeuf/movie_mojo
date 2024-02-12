@@ -17,6 +17,7 @@ class MoviesController < ApplicationController
     # raise
     if @movie_db.save
       @watched_movie = WatchedMovie.new(user_id: current_user.id, movie: @movie_db)
+      # raise
       @watched_movie.save
     else
       # render :new
