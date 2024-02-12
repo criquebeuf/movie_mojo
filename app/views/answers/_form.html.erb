@@ -1,9 +1,13 @@
-<div class="container mt-3">
-  <div class="magic-form-answers <%= 'previous' if params[:previous] %>", data-controller="question">
+<div class="container mt-3 position-relative" data-controller='loader'>
+  <div class="magic-form-answers neat-screen blurry-screen <%= 'previous' if params[:previous] %>", data-controller="question">
     <h2><%= @question.content %></h2>
     <%= simple_form_for [@question, @answer] do |f| %>
       <%= f.input :content, collection: @question.inclusion_source, input_html: { data: { action: "input->question#storeData", question_target: "answer" } } %>
-      <%= f.button :submit, "Next", data: { action: "click->question#next" } %>
+      <% if Question::QUESTIONS.key(@question.content) == :runtime %>
+        <span data-action='click->loader#loadingPage'><%= f.button :submit, "Next" %></span>
+      <% else %>
+        <%= f.button :submit, "Next", data: { action: "click->question#next" } %>
+      <% end %>
       <div>
         <% unless @previous_answer %>
           <%= link_to "Back", root_path, class: "magic-form-button-users-back btn" %>
@@ -12,5 +16,14 @@
         <% end %>
       </div>
     <% end %>
+  </div>
+  <div class="spinner d-none" data-loader-target='spinning'>
+    <span>L</span>
+    <span>O</span>
+    <span>A</span>
+    <span>D</span>
+    <span>I</span>
+    <span>N</span>
+    <span>G</span>
   </div>
 </div>
