@@ -14,16 +14,15 @@ class QuestionnairesController < ApplicationController
   def show
     # Get the five answers
     @answers = @questionnaire.answers
+
     # search 1: based on main criteria => return movie_id
     @movie_ids = search_main_params
+
     # search 2: based on movie_id => return more details (e.g. runtime, actors etc.)
-    # @questionnaire.results = search_by_movie_id(@movie_ids)
     @movies = search_by_movie_id(@movie_ids)
-    @movies.each do |movie|
-      @questionnaire.results << movie
-    end
-    # @questionnaire.save
-    # raise
+
+    # store it in the results of the questionnaire to access it later in the watchlist
+    @questionnaire.update(results: @movies)
   end
 
   def new
@@ -100,6 +99,7 @@ class QuestionnairesController < ApplicationController
       # to be refactored with loop/check if exists (not working for documentaries)
       @movie['actor_first'] = result['cast'][0]['name']
       @movie['actor_second'] = result['cast'][1]['name']
+      @movie['poster_path'] = "https://image.tmdb.org/t/p/w342#{@movie['poster_path']}"
 
       # Weight each user criteria
       @movie['counter'] = 0
