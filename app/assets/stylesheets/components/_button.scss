@@ -104,23 +104,23 @@
 }
 
 
-.visitor-button{
-    font-size: 1.1rem;
-    padding: 0.8em 2em;
-    background-color: #000;
-    border: 3px solid $yellow;
-    border-radius: 1em;
-    color: #fff;
-    font-weight: bolder;
-    transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.4s;
-    box-shadow: 3px 3px 0px 0px $yellow;
-  }
+.visitor-button {
+  font-size: 1.1rem;
+  padding: 0.8em 2em;
+  background-color: #000;
+  border: 3px solid $yellow;
+  border-radius: 1em;
+  color: #fff;
+  font-weight: bolder;
+  transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.4s;
+  box-shadow: 3px 3px 0px 0px $yellow;
+}
 
-  .visitor-button:hover {
-    transform: translate(5px, -5px);
-  }
+.visitor-button:hover {
+  transform: translate(5px, -5px);
+}
 
-.magic-form-button-users{
+.magic-form-button-users {
   --input-focus: #2d8cf0;
   --font-color: #fefefe;
   --font-color-sub: #7e7e7e;
@@ -135,10 +135,10 @@
   margin: 20px;
   padding-bottom: 20px;
   text-decoration: none;
-  color:white;
+  color: white;
 }
 
-.magic-form-button-users-back{
+.magic-form-button-users-back {
   --input-focus: #2d8cf0;
   --font-color: #fefefe;
   --font-color-sub: #7e7e7e;
@@ -160,9 +160,26 @@
   input:focus {
     border: 2px solid var(--input-focus);
   }
-  &.btn:hover{
+
+  &.btn:hover {
     color: $red;
     border: $red;
     box-shadow: 4px 4px $red;
   }
+}
+
+.revealButton {
+  font-size: 12px;
+  padding: 4px 8px;
+  background-color: #000;
+  border: 1px solid $yellow;
+  border-radius: 0.25em;
+  color: #fff;
+  font-weight: bolder;
+  transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.4s;
+  box-shadow: 1px 1px 0px 0px $yellow;
+}
+
+.revealButton:hover {
+  transform: translate(0.1px, -0.05px);
 }
