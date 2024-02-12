@@ -12,18 +12,24 @@
             <%# <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="back"></button> %>
           </div>
           <div class="modal-body">
-            <img class="modal-poster" src="https://image.tmdb.org/t/p/w342<%= @movies.first['poster_path']%>">
+            <img class="modal-poster" src=<%= @movies.first['poster_path']%>>
             <p>Genres:
               <% @movies.first['genres'].each do |genre| %>
                 <%= genre['name'] %>
               <% end %></p>
               <p> Director: <%= @movies.first['director']%></p>
               <p> Actors: <%= @movies.first['actor_first']%>, <%= @movies.first['actor_second']%></p>
+              <p> Runtime: <%= @movies.first['runtime']%> minutes</p>
             <p><%= @movies.first['overview']%></p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Add to watchlist</button>
+            <%# <button type="button" class="btn btn-primary">Add to watchlist</button> %>
+            <% if user_signed_in? %>
+              <%= button_to "Add to watchlist", movies_path, data: { turbo_method: :post }, class: "visitor-button" %>
+            <% else %>
+              <%= link_to "Add to watchlist", new_user_registration_path, class: "visitor-button"%>
+            <% end %>
           </div>
         </div>
       </div>
@@ -31,6 +37,7 @@
   </div>
 
 <!---modal left card---->
+
 
   <div class="modal-container">
       <div class="modal fade" id="second" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -41,7 +48,7 @@
               <%# <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="back"></button> %>
             </div>
             <div class="modal-body">
-              <img class="modal-poster" src="https://image.tmdb.org/t/p/w342<%= @movies.second['poster_path']%>">
+              <img class="modal-poster" src=<%= @movies.second['poster_path']%>>
               <p>Genres:
                 <% @movies.second['genres'].each do |genre| %>
                   <%= genre['name'] %>
@@ -61,6 +68,7 @@
 
 <!---modal right card---->
 
+
   <div class="modal-container">
       <div class="modal fade" id="third" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -70,7 +78,7 @@
               <%# <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="back"></button> %>
             </div>
             <div class="modal-body">
-              <img class="modal-poster" src="https://image.tmdb.org/t/p/w342<%= @movies.third['poster_path']%>">
+              <img class="modal-poster" src=<%= @movies.third['poster_path']%>>
               <p>Genres:
                 <% @movies.third['genres'].each do |genre| %>
                   <%= genre['name'] %>
@@ -88,7 +96,6 @@
       </div>
     </div>
 
-
 <!------Left Card--------->
 
   <div class="row">
@@ -105,7 +112,7 @@
           </p>
         </div>
         <% end %>
-        <div class="overlay" data-results-target="overlayFilter" style="background-image:url(https://image.tmdb.org/t/p/w342<%= @movies.second['poster_path']%>); background-size: cover; background-position: center;"></div>
+        <div class="overlay" data-results-target="overlayFilter" style="background-image:url(<%= @movies.second['poster_path']%>); background-size: cover; background-position: center;"></div>
         <h2 class="mx-3 my-3 text-center"><%= @movies.second['title']%></h2>
         <div class="second-text-center d-flex flex-column align-items-center justify-content-center">
       </div>
@@ -115,7 +122,7 @@
 <!------Middle Card--------->
 
   <div class="col my-3">
-    <div class="result-movie-card first-signed-up d-flex align-items-start flex-column" data-bs-toggle="modal" data-bs-target="#first" style="background-image:url(https://image.tmdb.org/t/p/w342<%= @movies.first['poster_path']%>); background-size: cover; background-position: center;">
+    <div class="result-movie-card first-signed-up d-flex align-items-start flex-column" data-bs-toggle="modal" data-bs-target="#first" style="background-image:url(<%= @movies.first['poster_path']%>); background-size: cover; background-position: center;">
       <h2 class="mx-3 my-3 py-2"><%= @movies.first['title']%> (<%= @movies.first['release_date'][0, 4]%>)</h2>
       <div class="movie-info text-start mt-auto mx-3">
         <p> Runtime: <%= @movies.first['runtime']%> minutes</p>
@@ -145,7 +152,7 @@
         </p>
       </div>
        <% end %>
-      <div class="overlay" data-results-target="overlayFilter" style="background-image:url(https://image.tmdb.org/t/p/w342<%= @movies.third['poster_path']%>);
+      <div class="overlay" data-results-target="overlayFilter" style="background-image:url(<%= @movies.third['poster_path']%>);
         background-size: cover;
         background-position: center;">
       </div>

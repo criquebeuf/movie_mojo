@@ -166,6 +166,39 @@
     border: $red;
     box-shadow: 4px 4px $red;
   }
+
+
+}
+
+.magic-form-button-users-delete{
+  --input-focus: #2d8cf0;
+  --font-color: #fefefe;
+  --font-color-sub: #7e7e7e;
+  --bg-color: #111;
+  --main-color: #fefefe;
+  padding: 5px 10px;
+  background: var(--bg-color);
+  gap: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  box-shadow: 3px 3px var(--main-color);
+  margin-top: 10px;
+  padding-bottom: 20px;
+  text-decoration: none;
+  color: white;
+  width: 200px;
+  height: 40px;
+
+  input:focus {
+    border: 2px solid var(--input-focus);
+  }
+  &.btn:hover{
+    color: $red;
+    border: $red;
+    box-shadow: 4px 4px $red;
+  }
+
+
 }
 
 .revealButton {
