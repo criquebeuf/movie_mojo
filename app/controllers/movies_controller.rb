@@ -2,15 +2,21 @@ class MoviesController < ApplicationController
   before_action :set_questionnaire, only: [:create]
 
   def create
+    # puts params
     # questionnaires results is an array of strings
     # eval will create a hash from the string elements that were saved in the results
-    @movie_api = eval(@questionnaire.results.first)
+    # @movie_api = eval(@questionnaire.results.first)
 
     # map the attributes between the movie coming from the api and the movie model in our db
-    @movie_db = map_movie_attributes(@movie_api)
+    # @movie_db = map_movie_attributes(@movie_api)
+    @movie_db = map_movie_attributes(params)
 
     # mark the movie as watched, create this movie in the db if not already present
     save_watched_movie(@movie_db)
+
+    respond_to do |format|
+      format.json { render json: { movie: @movie_db } }
+    end
   end
 
   private
@@ -53,6 +59,7 @@ class MoviesController < ApplicationController
       @movie_db.save
       @watched_movie = WatchedMovie.new(user_id: current_user.id, movie: @movie_db)
     end
+
     @watched_movie.save
   end
 end
