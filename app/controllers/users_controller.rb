@@ -9,4 +9,12 @@ class UsersController < ApplicationController
       redirect_to new_user_registration_path
     end
   end
+
+def watched_movies
+  @user = current_user
+  @movies = @user.watched_movies
+end
+
+
+
 end
