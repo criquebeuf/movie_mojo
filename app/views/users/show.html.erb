@@ -4,7 +4,7 @@
       <div class="col d-flex justify-content-center my-3">
         <div class="card-profile">
           <div class="profile-picture">
-            <i class="fa-solid fa-user fa-2xl" style="color: #ffffff;"></i>
+            <%= image_tag current_user.avatar, class: "avatar-dashboard" %></label>
           </div>
           <p class="profile-name"> Info
               <span><%= @user.email %>

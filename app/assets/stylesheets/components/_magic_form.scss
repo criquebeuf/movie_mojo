@@ -196,3 +196,50 @@ $transition_time: 500ms;
   animation-duration: $transition_time;
   animation-name: -ua-view-transition-fade-in, slidein-left;
 }
+
+.tag-item {
+  // this is displaying as a row instead of column
+  display: inline-flex;
+  justify-content: center; /* Center the items horizontally */
+  align-items: center; /* Center the items vertically */
+}
+
+.tag-selector {
+  // this is hidding the selector
+  position: absolute;
+  transform: scale(0);
+  color:white !important;
+}
+
+.tag-selector + label {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 2rem;
+  padding: 15px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  box-shadow: 3px 3px var(--main-color);
+  margin: 20px;
+  text-decoration: none;
+  color:white;
+}
+
+.tag-selector:checked + label {
+  background-color: $blue;
+  color: white;
+}
+
+.col-form-label {
+  display: none;
+}
+
+.cs-is-valid {
+  color: white;
+}
+
+
+.form-check-label:hover {
+  background-color: $yellow;
+  transform: translate(5px, -5px);
+  /* Add more hover styles as needed */
+}

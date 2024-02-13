@@ -2,21 +2,36 @@
   <div class="magic-form-answers neat-screen blurry-screen <%= 'previous' if params[:previous] %>", data-controller="question">
     <h2><%= @question.content %></h2>
     <%= simple_form_for [@question, @answer] do |f| %>
-      <%= f.input :content, collection: @question.inclusion_source, input_html: { data: { action: "input->question#storeData" } } %>
-      <% if Question::QUESTIONS.key(@question.content) == :runtime %>
-        <span data-action='click->loader#loadingPage'><%= f.button :submit, "Next" %></span>
+      <% if Question::QUESTIONS.key(@question.content) == :decade || Question::QUESTIONS.key(@question.content) == :runtime %>
+        <%= f.input :content,
+          as: :radio_buttons,
+          input_html: { class: "tag-selector", data: { action: "input->question#storeData" }},
+          item_wrapper_class: 'tag-item', collection_wrapper_class: 'd-flex justify-content-center flex-wrap', collection: @question.inclusion_source %>,
+      <% elsif Question::QUESTIONS.key(@question.content) == :genre %>
+          <%= f.input :content,
+          as: :check_boxes,
+          input_html: { class: "tag-selector", data: { action: "input->question#storeData" }},
+          item_wrapper_class: 'tag-item', collection_wrapper_class: 'd-flex justify-content-center flex-wrap', collection: @question.inclusion_source %>,
       <% else %>
-        <%= f.button :submit, "Next", data: { action: "click->question#next" } %>
+        <%= f.input :content, collection: @question.inclusion_source, input_html: { data: { action: "input->question#storeData" } } %>
       <% end %>
-      <div>
+
+      <div class="d-flex justify-content-center w-100">
         <% unless @previous_answer %>
-          <%= link_to "Back", root_path, class: "magic-form-button-users-back btn" %>
+          <%= link_to "←", root_path, class: "magic-form-button-users-back btn" %>
         <% else %>
-          <%= link_to "Previous", edit_question_answer_path(@previous_question, @previous_answer, previous: true), class: "magic-form-button-users-back btn", data: { action: "click->question#previous" } %>
+          <%= link_to "←", edit_question_answer_path(@previous_question, @previous_answer, previous: true), class: "magic-form-button-users-back btn", data: { action: "click->question#previous" } %>
+        <% end %>
+
+        <% if Question::QUESTIONS.key(@question.content) == :runtime %>
+          <span data-action='click->loader#loadingPage'><%= f.button :submit, "See results", style: "width: 100px; margin-left: 30px; background-color: #BAA679;" %></span>
+        <% else %>
+          <%= f.button :submit, "→", style: "width: 100px; margin-left: 30px;", data: { action: "click->question#next" } %>
         <% end %>
       </div>
+    </div>
     <% end %>
-  </div>
+
   <div class="spinner d-none" data-loader-target='spinning'>
     <span>L</span>
     <span>O</span>
