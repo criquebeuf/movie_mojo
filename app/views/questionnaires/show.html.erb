@@ -4,7 +4,7 @@
   <!-- Modal main card-->
 
   <div class="modal-container">
-    <div class="modal fade" id="first" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="first" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -23,12 +23,19 @@
             <p><%= @movies.first['overview']%></p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <%# <button type="button" class="btn btn-primary">Add to watchlist</button> %>
+            <div class="d-flex justify-content-center button-container">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
             <% if user_signed_in? %>
-              <%= button_to "Add to watchlist", movies_path, data: { turbo_method: :post }, class: "visitor-button" %>
+            <div class="d-flex justify-content-center button-container">
+              <div data-controller="add-to-watchlist" data-add-to-watchlist-movie-value="<%= @movies.first.to_json %>">
+                <%= button_to "Add to watchlist", movies_path, data: { action: "click->add-to-watchlist#add" }, class: "button-submit" %>
+              </div>
+            </div>
             <% else %>
-              <%= link_to "Add to watchlist", new_user_registration_path, class: "visitor-button"%>
+              <div class="d-flex justify-content-center button-container">
+                <%= link_to "Add to watchlist", new_user_registration_path, class: "button-submit"%>
+              </div>
             <% end %>
           </div>
         </div>
@@ -40,7 +47,7 @@
 
 
   <div class="modal-container">
-      <div class="modal fade" id="second" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal fade" id="second" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -58,12 +65,20 @@
               <p><%= @movies.second['overview']%></p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                 <% if user_signed_in? %>
-                  <%= button_to "Add to watchlist", movies_path, data: { turbo_method: :post }, class: "visitor-button" %>
-                 <% else %>
-                  <%= link_to "Add to watchlist", new_user_registration_path, class: "visitor-button"%>
-                <% end %>
+              <div class="d-flex justify-content-center button-container">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+              <% if user_signed_in? %>
+              <div class="d-flex justify-content-center button-container">
+                <div data-controller="add-to-watchlist" data-add-to-watchlist-movie-value="<%= @movies.second.to_json %>">
+                  <%= button_to "Add to watchlist", movies_path, data: { action: "click->add-to-watchlist#add" }, class: "button-submit" %>
+                </div>
+              </div>
+              <% else %>
+                <div class="d-flex justify-content-center button-container">
+                  <%= link_to "Add to watchlist", new_user_registration_path, class: "button-submit"%>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>
@@ -74,7 +89,7 @@
 
 
   <div class="modal-container">
-      <div class="modal fade" id="third" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal fade" id="third" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -92,12 +107,20 @@
               <p><%= @movies.third['overview']%></p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                 <% if user_signed_in? %>
-                  <%= button_to "Add to watchlist", movies_path, data: { turbo_method: :post }, class: "visitor-button" %>
-                 <% else %>
-                  <%= link_to "Add to watchlist", new_user_registration_path, class: "visitor-button"%>
-                <% end %>
+              <div class="d-flex justify-content-center button-container">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+              <% if user_signed_in? %>
+              <div class="d-flex justify-content-center button-container">
+                <div data-controller="add-to-watchlist" data-add-to-watchlist-movie-value="<%= @movies.third.to_json %>">
+                  <%= button_to "Add to watchlist", movies_path, data: { action: "click->add-to-watchlist#add" }, class: "button-submit" %>
+                </div>
+              </div>
+              <% else %>
+                <div class="d-flex justify-content-center button-container">
+                  <%= link_to "Add to watchlist", new_user_registration_path, class: "button-submit"%>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>

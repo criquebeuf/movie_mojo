@@ -4,6 +4,8 @@ import "controllers"
 import "@popperjs/core"
 import "bootstrap"
 
+// SLIDE ANIMATION
+
 addEventListener("turbo:before-render", (event) => {
   if (document.startViewTransition) {
     const originalRender = event.detail.render
