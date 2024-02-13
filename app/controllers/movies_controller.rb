@@ -9,11 +9,14 @@ class MoviesController < ApplicationController
 
     # map the attributes between the movie coming from the api and the movie model in our db
     # @movie_db = map_movie_attributes(@movie_api)
+    # now the movie is coming from the view where you have clicked on "add to watchlist"
+    # therefore the movie is basically the params -> see also add_to_watchlist_controller.js
     @movie_db = map_movie_attributes(params)
 
     # mark the movie as watched, create this movie in the db if not already present
     save_watched_movie(@movie_db)
 
+    # because fetch is only accepting json format, we need to respond to in JSON
     respond_to do |format|
       format.json { render json: { movie: @movie_db } }
     end

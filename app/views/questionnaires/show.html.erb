@@ -24,10 +24,8 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <%# <button type="button" class="btn btn-primary">Add to watchlist</button> %>
             <% if user_signed_in? %>
               <div data-controller="add-to-watchlist" data-add-to-watchlist-movie-value="<%= @movies.first.to_json %>">
-                <%#= button_to "Add to watchlist", movies_path, data: { turbo_method: :post }, class: "visitor-button" %>
                 <%= button_to "Add to watchlist", movies_path, data: { action: "click->add-to-watchlist#add" }, class: "visitor-button" %>
               </div>
             <% else %>
@@ -62,7 +60,13 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Add to watchlist</button>
+              <% if user_signed_in? %>
+                <div data-controller="add-to-watchlist" data-add-to-watchlist-movie-value="<%= @movies.second.to_json %>">
+                  <%= button_to "Add to watchlist", movies_path, data: { action: "click->add-to-watchlist#add" }, class: "visitor-button" %>
+                </div>
+              <% else %>
+                <%= link_to "Add to watchlist", new_user_registration_path, class: "visitor-button"%>
+              <% end %>
             </div>
           </div>
         </div>
@@ -92,7 +96,13 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Add to watchlist</button>
+              <% if user_signed_in? %>
+                <div data-controller="add-to-watchlist" data-add-to-watchlist-movie-value="<%= @movies.third.to_json %>">
+                  <%= button_to "Add to watchlist", movies_path, data: { action: "click->add-to-watchlist#add" }, class: "visitor-button" %>
+                </div>
+              <% else %>
+                <%= link_to "Add to watchlist", new_user_registration_path, class: "visitor-button"%>
+              <% end %>
             </div>
           </div>
         </div>
