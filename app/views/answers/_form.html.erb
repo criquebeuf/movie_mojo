@@ -6,12 +6,12 @@
         <%= f.input :content,
           as: :radio_buttons,
           input_html: { class: "tag-selector", data: { action: "input->question#storeData" }},
-          item_wrapper_class: 'tag-item', collection_wrapper_class: 'd-flex justify-content-center flex-wrap', collection: @question.inclusion_source %>,
+          item_wrapper_class: 'tag-item', collection_wrapper_class: 'd-flex justify-content-center flex-wrap', collection: @question.inclusion_source %>
       <% elsif Question::QUESTIONS.key(@question.content) == :genre %>
           <%= f.input :content,
           as: :check_boxes,
           input_html: { class: "tag-selector", data: { action: "input->question#storeData" }},
-          item_wrapper_class: 'tag-item', collection_wrapper_class: 'd-flex justify-content-center flex-wrap', collection: @question.inclusion_source %>,
+          item_wrapper_class: 'tag-item', collection_wrapper_class: 'd-flex justify-content-center flex-wrap', collection: @question.inclusion_source %>
       <% else %>
         <%= f.input :content, collection: @question.inclusion_source, input_html: { data: { action: "input->question#storeData" } } %>
       <% end %>

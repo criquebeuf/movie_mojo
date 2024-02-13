@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :users, only: [:show, :destroy]
 
+
   resources :questionnaires, only: [:index, :show, :new, :create]
   resources :questions do
     resources :answers, only: [:new, :create, :edit, :update]
