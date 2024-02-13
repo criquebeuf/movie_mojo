@@ -16,7 +16,7 @@
           <%= link_to "Delete your account", user_registration_path, class: "magic-form-button-users-delete btn", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
         </div>
   </div>
-  <div class="row my-4">
+  <div class="row my-4" data-controller="star-rating">
     <h2 class="text-center my-3">Watchlist</h2>
     <div class="col my-3 mx-2">
       <div id="watchlist-card-id" class="watchlist-card">
@@ -30,18 +30,34 @@
           </p>
         </div>
       </div>
-        <div class="rating my-2">
-          <input value="5" name="rating" id="star5" type="radio">
-          <label for="star5"></label>
-          <input value="4" name="rating" id="star4" type="radio">
-          <label for="star4"></label>
-          <input value="3" name="rating" id="star3" type="radio">
-          <label for="star3"></label>
-          <input value="2" name="rating" id="star2" type="radio">
-          <label for="star2"></label>
-          <input value="1" name="rating" id="star1" type="radio">
-          <label for="star1"></label>
+        <%# <div class="my-2" data-star-rating-target="rater" data-action= "click->star-rating#submit"> %>
+            <%#= simple_form_for [@user, @movie] do |f| %>
+              <%#= f.input :rating_user, collection: (1..5).to_a, label: "Rate your experience" %>
+              <%#= f.submit "Send your review" %>
+            <%# end %>
+        <%# </div> %>
       </div>
+
+    <div class="col my-3 mx-2">
+      <div id="watchlist-card-id" class="watchlist-card">
+            <img src="https://source.unsplash.com/random " alt="">
+            <div class="watchlist-card-content">
+              <p class="watchlist-card-title">TITLE</p>
+              <p class="watchlist-card-description">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae
+                justo vel lorem tincidunt ultrices at non nunc. Donec in sapien viverra,
+                tincidunt augue id, efficitur massa.
+              </p>
+            </div>
+        </div>
+        <div class="my-2" data-star-rating-target="rater" data-action= "click->star-rating#submit">
+        <%# <div class="my-2" data-star-rating-target="rater" data-action= "click->star-rating#submit"> %>
+            <%#= simple_form_for [@user, @movie] do |f| %>
+              <%#= f.input :rating_user, collection: (1..5).to_a, label: "Rate your experience" %>
+              <%#= f.submit "Send your review" %>
+            <%# end %>
+        <%# </div> %>
+        </div>
     </div>
 
     <div class="col my-3 mx-2">
@@ -56,44 +72,12 @@
               </p>
             </div>
         </div>
-        <div class="rating my-2">
-          <input value="5" name="rating" id="star5" type="radio">
-          <label for="star5"></label>
-          <input value="4" name="rating" id="star4" type="radio">
-          <label for="star4"></label>
-          <input value="3" name="rating" id="star3" type="radio">
-          <label for="star3"></label>
-          <input value="2" name="rating" id="star2" type="radio">
-          <label for="star2"></label>
-          <input value="1" name="rating" id="star1" type="radio">
-          <label for="star1"></label>
-      </div>
-    </div>
-
-    <div class="col my-3 mx-2">
-      <div id="watchlist-card-id" class="watchlist-card">
-            <img src="https://source.unsplash.com/random " alt="">
-            <div class="watchlist-card-content">
-              <p class="watchlist-card-title">TITLE</p>
-              <p class="watchlist-card-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae
-                justo vel lorem tincidunt ultrices at non nunc. Donec in sapien viverra,
-                tincidunt augue id, efficitur massa.
-              </p>
-            </div>
-        </div>
-          <div class="rating my-2">
-          <input value="5" name="rating" id="star5" type="radio">
-          <label for="star5"></label>
-          <input value="4" name="rating" id="star4" type="radio">
-          <label for="star4"></label>
-          <input value="3" name="rating" id="star3" type="radio">
-          <label for="star3"></label>
-          <input value="2" name="rating" id="star2" type="radio">
-          <label for="star2"></label>
-          <input value="1" name="rating" id="star1" type="radio">
-          <label for="star1"></label>
-      </div>
+        <%# <div class="my-2" data-star-rating-target="rater" data-action= "click->star-rating#submit"> %>
+            <%#= simple_form_for [@user, @movie] do |f| %>
+              <%#= f.input :rating_user, collection: (1..5).to_a, label: "Rate your experience" %>
+              <%#= f.submit "Send your review" %>
+            <%# end %>
+        <%# </div> %>
     </div>
 
       <div class="col my-3 mx-2">
@@ -108,18 +92,12 @@
               </p>
             </div>
         </div>
-          <div class="rating my-2">
-          <input value="5" name="rating" id="star5" type="radio">
-          <label for="star5"></label>
-          <input value="4" name="rating" id="star4" type="radio">
-          <label for="star4"></label>
-          <input value="3" name="rating" id="star3" type="radio">
-          <label for="star3"></label>
-          <input value="2" name="rating" id="star2" type="radio">
-          <label for="star2"></label>
-          <input value="1" name="rating" id="star1" type="radio">
-          <label for="star1"></label>
-      </div>
+        <%# <div class="my-2" data-star-rating-target="rater" data-action= "click->star-rating#submit"> %>
+            <%#= simple_form_for [@user, @movie] do |f| %>
+              <%#= f.input :rating_user, collection: (1..5).to_a, label: "Rate your experience" %>
+              <%#= f.submit "Send your review" %>
+            <%# end %>
+        <%# </div> %>
     </div>
 
       <div class="col my-3 mx-2">
@@ -134,19 +112,14 @@
               </p>
             </div>
         </div>
-          <div class="rating my-2">
-          <input value="5" name="rating" id="star5" type="radio">
-          <label for="star5"></label>
-          <input value="4" name="rating" id="star4" type="radio">
-          <label for="star4"></label>
-          <input value="3" name="rating" id="star3" type="radio">
-          <label for="star3"></label>
-          <input value="2" name="rating" id="star2" type="radio">
-          <label for="star2"></label>
-          <input value="1" name="rating" id="star1" type="radio">
-          <label for="star1"></label>
-      </div>
+           <%# <div class="my-2" data-star-rating-target="rater" data-action= "click->star-rating#submit"> %>
+            <%#= simple_form_for [@user, @movie] do |f| %>
+              <%#= f.input :rating_user, collection: (1..5).to_a, label: "Rate your experience" %>
+              <%#= f.submit "Send your review" %>
+            <%# end %>
+        <%# </div> %>
     </div>
 
+</div>
 </div>
 </div>
