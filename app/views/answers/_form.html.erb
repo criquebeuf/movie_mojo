@@ -13,7 +13,7 @@
           input_html: { class: "tag-selector", data: { action: "input->question#storeData" }},
           item_wrapper_class: 'tag-item', collection_wrapper_class: 'd-flex justify-content-center flex-wrap', collection: @question.inclusion_source %>
       <% else %>
-        <%= f.input :content, collection: @question.inclusion_source, input_html: { data: { action: "input->question#storeData" } } %>
+        <%= f.input :content, collection: @question.inclusion_source, input_html: { data: { action: "input->question#storeData" }, autocomplete: "off"}  %>
       <% end %>
 
       <div class="d-flex justify-content-center w-100">
@@ -24,7 +24,7 @@
         <% end %>
 
         <% if Question::QUESTIONS.key(@question.content) == :runtime %>
-          <span data-action='click->loader#loadingPage'><%= f.button :submit, "See results", style: "width: 100px; margin-left: 30px; background-color: #BAA679;" %></span>
+          <span data-action='click->loader#loadingPage'><%= f.button :submit, "See results", style: "width: 100px; margin-left: 30px; background-color: #BAA679; color: white !important" %></span>
         <% else %>
           <%= f.button :submit, "→", style: "width: 100px; margin-left: 30px;", data: { action: "click->question#next" } %>
         <% end %>

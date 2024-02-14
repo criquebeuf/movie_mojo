@@ -1,6 +1,10 @@
   <div class="container my-5">
 
+  <% if @movies.first.nil? || @movies.second.nil? || @movies.third.nil? %>
+  # TODO
+  No movies found
 
+  <% else %>
   <!-- Modal main card-->
 
   <div class="modal-container">
@@ -201,5 +205,9 @@
       </div>
     </div>
   </div>
+
+  <% end %>
+
+
 
 </div>
