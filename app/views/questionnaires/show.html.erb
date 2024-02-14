@@ -15,10 +15,10 @@
           <div class="modal-body">
             <img class="modal-poster" src=<%= @movies.first['poster_path']%>>
             <h2 class="modal-title" id="staticBackdropLabel"><%= @movies.first['title']%> (<%= @movies.first['release_date'][0, 4]%>)</h2>
-            <p class="genres-tag">
-              <% @movies.first['genres'].each do |genre| %>
-                <%= genre['name'] %>
-              <% end %></p>
+             <p><div class="genre-flex">
+                <% @movies.first['genres'].each do |genre| %>
+                 <div class="genres-tag"> <%= genre['name'] %></div>
+                <% end %></div>
               <div class="modal-infos">
               <p><strong> Directed by </strong> <%= @movies.first['director']%></p>
               <p><strong> Cast: </strong><%= @movies.first['actor_first']%>, <%= @movies.first['actor_second']%></p>
@@ -33,7 +33,7 @@
             <% if user_signed_in? %>
             <div class="d-flex justify-content-center button-container">
               <div data-controller="add-to-watchlist" data-add-to-watchlist-movie-value="<%= @movies.first.to_json %>">
-                <%= button_to "Add to watchlist", movies_path, data: { action: "click->add-to-watchlist#add" }, class: "button-submit" %>
+                <%= button_to "I'm watching this", movies_path, data: { action: "click->add-to-watchlist#add" }, class: "button-submit" %>
               </div>
             </div>
             <% else %>
@@ -58,10 +58,10 @@
             <div class="modal-body">
               <img class="modal-poster" src=<%= @movies.second['poster_path']%>>
               <h2 class="modal-title" id="staticBackdropLabel"><%= @movies.second['title']%> (<%= @movies.second['release_date'][0, 4]%>)</h2>
-              <p class="genres-tag">
+               <p><div class="genre-flex">
                 <% @movies.second['genres'].each do |genre| %>
-                  <%= genre['name'] %>
-                <% end %></p>
+                 <div class="genres-tag"> <%= genre['name'] %></div>
+                <% end %></div></p>
                 <div class="modal-infos">
                 <p><strong> Directed by</strong> <%= @movies.second['director']%></p>
                 <p><strong> Cast: </strong><%= @movies.second['actor_first']%>, <%= @movies.second['actor_second']%></p>
@@ -76,7 +76,7 @@
               <% if user_signed_in? %>
               <div class="d-flex justify-content-center button-container">
                 <div data-controller="add-to-watchlist" data-add-to-watchlist-movie-value="<%= @movies.second.to_json %>">
-                  <%= button_to "Add to watchlist", movies_path, data: { action: "click->add-to-watchlist#add" }, class: "button-submit" %>
+                  <%= button_to "I'm watching this", movies_path, data: { action: "click->add-to-watchlist#add" }, class: "button-submit" %>
                 </div>
               </div>
               <% else %>
@@ -85,7 +85,6 @@
                 </div>
               <% end %>
             </div>
-          </div>
         </div>
       </div>
     </div>
@@ -101,10 +100,10 @@
             <div class="modal-body">
               <img class="modal-poster" src=<%= @movies.third['poster_path']%>>
               <h2 class="modal-title" id="staticBackdropLabel"><%= @movies.third['title']%> (<%= @movies.third['release_date'][0, 4]%>)</h2>
-              <p class="genres-tag">
+              <p><div class="genre-flex">
                 <% @movies.third['genres'].each do |genre| %>
-                  <%= genre['name'] %>
-                <% end %></p>
+                 <div class="genres-tag"> <%= genre['name'] %></div>
+                <% end %></div></p>
                 <div class="modal-infos">
                 <p><strong> Directed by </strong><%= @movies.third['director']%></p>
                 <p><strong> Cast: </strong><%= @movies.third['actor_first']%>, <%= @movies.third['actor_second']%></p>
@@ -119,7 +118,7 @@
               <% if user_signed_in? %>
               <div class="d-flex justify-content-center button-container">
                 <div data-controller="add-to-watchlist" data-add-to-watchlist-movie-value="<%= @movies.third.to_json %>">
-                  <%= button_to "Add to watchlist", movies_path, data: { action: "click->add-to-watchlist#add" }, class: "button-submit" %>
+                  <%= button_to "I'm watching this", movies_path, data: { action: "click->add-to-watchlist#add" }, class: "button-submit" %>
                 </div>
               </div>
               <% else %>
