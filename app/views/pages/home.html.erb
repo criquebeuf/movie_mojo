@@ -5,8 +5,19 @@
   <div class="centered">
   <div class="banner-content text-center">
     <%# <%= image_tag("MojoIcon-transformed.png")%>
-    <h1 class="navbar-title">MovieMojo</h1>
-    <p>Quit overthinking your <br>
+    <%# <h1 class="navbar-title">MovieMojo</h1> %>
+      <div class="spinner-home" data-loader-target='spinning'>
+        <span>M</span>
+        <span>O</span>
+        <span>V</span>
+        <span>I</span>
+        <span>E</span>
+        <span>M</span>
+        <span>O</span>
+        <span>J</span>
+        <span>O</span>
+      </div>
+    <p class="subtitle-home">Quit overthinking your <br>
       movie choice and start <br>
       enjoying the show!</p>
      <div class="btn-start-main"><%= button_to "Start now", questionnaires_path, data: { turbo_method: :post }, class: "visitor-button" %></div>
