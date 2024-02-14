@@ -170,7 +170,7 @@
 
 }
 
-.magic-form-button-users-delete{
+.magic-form-button-users-delete {
   --input-focus: #2d8cf0;
   --font-color: #fefefe;
   --font-color-sub: #7e7e7e;
@@ -192,7 +192,8 @@
   input:focus {
     border: 2px solid var(--input-focus);
   }
-  &.btn:hover{
+
+  &.btn:hover {
     color: $red;
     border: $red;
     box-shadow: 4px 4px $red;
@@ -242,16 +243,17 @@ $animation-duration: 1s;
   width: 45%;
 }
 
-@media (min-width: 780px){
+@media (min-width: 780px) {
   .wrapper {
     width: 600px;
     display: grid;
-    grid-template-columns: repeat(2, [col] calc(100%/2) );
+    grid-template-columns: repeat(2, [col] calc(100%/2));
     grid-auto-rows: 120px;
     margin: 30px auto 40px;
   }
 }
-.button-submit{
+
+.button-submit {
   display: inline-block;
   min-width: $button-width;
   margin: 1rem auto;
@@ -269,18 +271,18 @@ $animation-duration: 1s;
   transition: border-radius linear 0.05s, width linear 0.05s;
 
 
-  &:focus{
+  &:focus {
     outline: 0;
   }
 
-  &.animate{
+  &.animate {
     width: $button-width/2.7;
     height: $button-width/2.7;
     min-width: 0;
     border-radius: 50%;
     color: transparent;
 
-    &:after{
+    &:after {
       position: absolute;
       content: '';
       width: $spinner-width;
@@ -295,7 +297,7 @@ $animation-duration: 1s;
       animation: spin ease-in $animation-duration forwards;
       animation-name: spin;
       -webkit-animation-name: spin;
-      transition-timing-function:ease-in-out;
+      transition-timing-function: ease-in-out;
       -webkit-transition-timing-function: ease-in-out;
       animation-duration: $animation-duration;
       -webkit-animation-duration: $animation-duration;
@@ -303,7 +305,7 @@ $animation-duration: 1s;
       -webkit-animation-fill-mode: forwards;
     }
 
-    &.success:before{
+    &.success:before {
       position: absolute;
       content: '';
       width: $spinner-width;
@@ -320,14 +322,14 @@ $animation-duration: 1s;
       animation-delay: $animation-duration;
     }
 
-    &.error{
+    &.error {
       position: relative;
       -webkit-animation: vibrate ease-in 0.5s forwards;
       animation: vibrate ease-in 0.5s forwards;
       -webkit-animation-delay: $animation-duration;
       animation-delay: $animation-duration;
 
-      &:before{
+      &:before {
         color: #fff;
         position: absolute;
         content: '!';
@@ -348,69 +350,116 @@ $animation-duration: 1s;
 
 
 @keyframes spin {
-    0% { transform: translate(-50%, -50%) rotate(0deg) scale(1);}
-    90% { transform: translate(-50%, -50%) rotate(1080deg) scale(1); }
-    100% { transform: scale(0); }
-    }
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+
+  90% {
+    transform: translate(-50%, -50%) rotate(1080deg) scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
 
 @-webkit-keyframes spin {
-  0% {-webkit-transform: translate(-50%,-50%) rotate(0deg) scale(1);}
+  0% {
+    -webkit-transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
 
-  98% {-webkit-transform: translate(-50%,-50%) rotate(1080deg) scale(1);}
+  98% {
+    -webkit-transform: translate(-50%, -50%) rotate(1080deg) scale(1);
+  }
 
-  100% {-webkit-transform: translate(-50%,-50%) rotate(1080deg) scale(0);}
+  100% {
+    -webkit-transform: translate(-50%, -50%) rotate(1080deg) scale(0);
+  }
 }
 
-@keyframes success{
-    from {
-       transform: translate(-50%, -50%) rotate(0) scale(0);
-       }
-    to {
-      transform: translate(-50%, -50%) rotate(-45deg) scale(1);
-    }
+@keyframes success {
+  from {
+    transform: translate(-50%, -50%) rotate(0) scale(0);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(-45deg) scale(1);
+  }
 }
 
-@-webkit-keyframes success{
-    from {
-       -webkit-transform: translate(-50%, -50%) rotate(0) scale(0);
-       }
-    to {
-      -webkit-transform: translate(-50%, -50%) rotate(-45deg) scale(1);
-    }
+@-webkit-keyframes success {
+  from {
+    -webkit-transform: translate(-50%, -50%) rotate(0) scale(0);
+  }
+
+  to {
+    -webkit-transform: translate(-50%, -50%) rotate(-45deg) scale(1);
+  }
 }
 
 @keyframes error {
-    from {
+  from {
     transform: translate(-50%, -50%) scale(0);
-    }
-    to {
+  }
+
+  to {
     transform: translate(-50%, -50%) scale(1);
     background-color: #f44336;
-    }
+  }
 }
 
 @-webkit-keyframes error {
-    from {
+  from {
     -webkit-transform: translate(-50%, -50%) scale(0);
-    }
-    to {
+  }
+
+  to {
     -webkit-transform: translate(-50%, -50%) scale(1);
     background-color: #f44336;
-    }
+  }
 }
 
 
 @keyframes vibrate {
-    0%, 30%, 60%, 85%, 100% {
-      left: 0;
-      background-color: #f44336;
-    }
-    10%, 40%, 90%, 70% {
-      left: -2px;
-      background-color: #f44336;
-    }
-    20%, 50%, 80%, 95% {
-      left: 2px;
-      background-color: #f44336;
-    }
+
+  0%,
+  30%,
+  60%,
+  85%,
+  100% {
+    left: 0;
+    background-color: #f44336;
+  }
+
+  10%,
+  40%,
+  90%,
+  70% {
+    left: -2px;
+    background-color: #f44336;
+  }
+
+  20%,
+  50%,
+  80%,
+  95% {
+    left: 2px;
+    background-color: #f44336;
+  }
+}
+
+.btn-secondary {
+  background-color: black;
+  border-radius: 10px;
+
+
+}
+
+.btn-secondary:hover {
+  color: $yellow;
+  background-color: black;
+}
+
+.button-submit:hover {
+  color: black;
 }
