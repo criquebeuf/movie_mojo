@@ -50,7 +50,7 @@ export default class extends Controller {
   }
 }
 
-var animateButton = function(e) {
+var animateButton = function (e) {
 
   e.preventDefault;
   //reset animation
@@ -61,8 +61,8 @@ var animateButton = function(e) {
 
   e.target.classList.add('animate');
 
-  setTimeout(function(){
+  setTimeout(function () {
     e.target.classList.remove('animate');
-  },6000);
+  }, 6000);
 
 };

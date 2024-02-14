@@ -3,10 +3,10 @@ class Question < ApplicationRecord
   has_one :answer, dependent: :destroy
 
   QUESTIONS = {
-    genre: "What are you in the mood for?",
-    decade: "Which decade are you in the mood for today?",
+    genre: "What are you in the mood for today?",
+    decade: "Do you have a specific decade in mind?",
     director: "If you have a favorite director, feel free to share.",
-    actor: "If you have a favorite actor or actress, feel free to share.",
+    actor: "You can also add your favorite actor or actress.",
     runtime: "How much time do you have today?"
   }
 
