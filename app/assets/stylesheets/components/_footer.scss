@@ -14,11 +14,12 @@
   margin-top: 5px;
   align-content: space-around;
   flex-direction: column-reverse;
+
   .api {
     display: inline;
     color: #01C6AC;
     padding: 0px;
-    font-size: 20px;
+    font-size: 18px;
     background: -webkit-linear-gradient(#01C6AC, #032541);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -33,7 +34,7 @@
 .footer-links a {
   opacity: 0.15;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 20px;
   padding: 10px 10px;
 }
 
@@ -44,4 +45,8 @@
 
 .footer .fa-heart {
   color: $red;
+}
+
+.footer-copyright p {
+  font-size: 18px;
 }
