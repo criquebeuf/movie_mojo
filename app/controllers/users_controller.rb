@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   def show
     @user = current_user
-    # @movie = @user.movie_ids
+    @movies = @user.movies
+    @rating = Rating.new(params[:score])
   end
 
   def destroy
@@ -11,11 +12,8 @@ class UsersController < ApplicationController
     end
   end
 
-def watched_movies
-  @user = current_user
-  @movies = @user.watched_movies
-end
-
-
-
+  def watched_movies
+    @user = current_user
+    @movies = @user.watched_movies
+  end
 end

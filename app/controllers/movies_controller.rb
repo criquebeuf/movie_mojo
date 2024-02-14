@@ -22,6 +22,11 @@ class MoviesController < ApplicationController
     end
   end
 
+  def update
+    @movie = Movie.find(params[:id])
+    @movie.update(movie_params)
+  end
+
   private
 
   def set_questionnaire
@@ -64,5 +69,9 @@ class MoviesController < ApplicationController
     end
 
     @watched_movie.save
+  end
+
+  def movie_params
+    params.require(:movie).permit(:rating_user)
   end
 end

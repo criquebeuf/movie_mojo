@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :questionnaires, dependent: :destroy
   has_many :watched_movies
   has_many :movies, through: :watched_movies
+  has_many :ratings
 
   before_create :assign_avatar
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_12_115536) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_14_091511) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,6 +61,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_12_115536) do
     t.index ["questionnaire_id"], name: "index_questions_on_questionnaire_id"
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.integer "score"
+    t.bigint "watched_movie_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_ratings_on_user_id"
+    t.index ["watched_movie_id"], name: "index_ratings_on_watched_movie_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -86,6 +96,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_12_115536) do
   add_foreign_key "answers", "questions"
   add_foreign_key "questionnaires", "users"
   add_foreign_key "questions", "questionnaires"
+  add_foreign_key "ratings", "users"
+  add_foreign_key "ratings", "watched_movies"
   add_foreign_key "watched_movies", "movies"
   add_foreign_key "watched_movies", "users"
 end
