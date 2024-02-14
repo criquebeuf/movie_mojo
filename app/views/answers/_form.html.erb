@@ -16,7 +16,7 @@
         <%= f.input :content, collection: @question.inclusion_source, input_html: { data: { action: "input->question#storeData" }, autocomplete: "off"}  %>
       <% end %>
 
-      <div class="d-flex justify-content-center w-100">
+      <div class="d-flex justify-content-center w-100" style="margin-top: 40px">
         <% unless @previous_answer %>
           <%= link_to "←", root_path, class: "magic-form-button-users-back btn" %>
         <% else %>
