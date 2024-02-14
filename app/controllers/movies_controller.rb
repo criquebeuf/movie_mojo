@@ -22,6 +22,7 @@ class MoviesController < ApplicationController
     end
   end
 
+
   def index
     @movies = Movie.all
     @watchlist_movies = current_user.watchlist.movies if current_user.watchlist.present?
@@ -69,5 +70,9 @@ class MoviesController < ApplicationController
     end
 
     @watched_movie.save
+  end
+
+  def movie_params
+    params.require(:movie).permit(:rating_user)
   end
 end

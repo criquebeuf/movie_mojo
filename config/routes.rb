@@ -17,4 +17,8 @@ Rails.application.routes.draw do
     resources :answers, only: [:new, :create, :edit, :update]
   end
   resources :movies, only: [:create]
+
+  resources :watched_movies, only: [:create, :update] do
+    resources :ratings, only: [:create]
+  end
 end

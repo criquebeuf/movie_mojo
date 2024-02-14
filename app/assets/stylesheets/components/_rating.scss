@@ -24,3 +24,19 @@
   color: $yellow;
   transition: color 0.3s;
 }
+
+.form-label{
+  &.select{
+    &.optional{
+      display: none
+    }
+  }
+}
+
+.gl-star-rating--stars[aria-label]::before {
+  display:none;
+}
+
+.gl-star-rating--stars[aria-label]::after {
+  display:none;
+}
