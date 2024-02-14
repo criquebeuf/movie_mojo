@@ -96,6 +96,9 @@
   pointer-events: none;
   transform: translateY(20px);
   transition: all 200ms linear;
+  a:hover{
+    background-color: $yellow;
+  }
 }
 
 .dropdown:checked~.section-dropdown {
@@ -160,7 +163,6 @@ a {
 
 a:hover {
   color: white;
-  background-color: $yellow;
 }
 
 a .uil {
