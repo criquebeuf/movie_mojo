@@ -22,6 +22,11 @@ class MoviesController < ApplicationController
     end
   end
 
+  def index
+    @movies = Movie.all
+    @watchlist_movies = current_user.watchlist.movies if current_user.watchlist.present?
+  end
+
   private
 
   def set_questionnaire
