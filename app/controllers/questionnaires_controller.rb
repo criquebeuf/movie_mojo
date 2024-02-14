@@ -19,9 +19,16 @@ class QuestionnairesController < ApplicationController
 
     # search 1: based on main criteria => return movie_id
     @movie_ids = search_main_params
+    @popular_movies_ids = popular_movies
 
     # search 2: based on movie_id => return more details (e.g. runtime, actors etc.)
-    @movies = search_by_movie_id(@movie_ids)
+    if @movie_ids.count >= 3
+      @movies = search_by_movie_id(@movie_ids)
+      puts "Initial API search successful"
+    else
+      @movies = search_by_movie_id(@popular_movies_ids)
+      puts "Initial API search failed: returns default popular movies"
+    end
 
     # store it in the results of the questionnaire to access it later in the watchlist
     @questionnaire.update(results: @movies)
@@ -69,8 +76,21 @@ class QuestionnairesController < ApplicationController
   end
 
   def popular_movies
+    genre = [28, 12, 35, 10751, 9648, 10749, 878].sample
     # Error Handling Path: returns 10 current popular movies if no results found
-    # TO DO
+    api_key = ENV['TMDB_KEY']
+    url = URI("https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&primary_release_date.gte=2010&primary_release_date.lte=2020&with_genres=#{genre}&vote_average.gte=7")
+    result = search_setup(url, api_key)
+    movie_ids = []
+    # Check if any results are returned
+    if result['results'].any?
+      @generated_popular_movies = result['results'].each do |movie|
+        movie_ids << movie['id']
+      end
+    else
+      puts "No movie found, please take questionnaire again"
+    end
+    return movie_ids
   end
 
   def search_main_params
@@ -109,8 +129,8 @@ class QuestionnairesController < ApplicationController
       director = @crew.find { |member| member['job'] == "Director" }
       @movie['director'] = director['name'] if director
       # to be refactored with loop/check if exists (not working for documentaries)
-      @movie['actor_first'] = result['cast'][0]['name'] if result['cast'].present?
-      @movie['actor_second'] = result['cast'][1]['name'] if result['cast'].present?
+      @movie['actor_first'] = result['cast'][0]['name'] if result['cast'].present? && result['cast'][0]['name'].present?
+      @movie['actor_second'] = result['cast'][1]['name'] if result['cast'][1].present? && result['cast'][1]['name'].present?
       @movie['poster_path'] = "https://image.tmdb.org/t/p/w342#{@movie['poster_path']}"
 
       # Weight each user criteria
