@@ -30,7 +30,7 @@ class Question < ApplicationRecord
     thriller: 53,
     war: 10752,
     western: 37
-  }
+}
 
   DECADES = {
     "50s" => 1950,
@@ -70,11 +70,14 @@ class Question < ApplicationRecord
     case QUESTIONS.key(self.content)
     when :genre
       puts genre_for_select
-      inclusion_source = genre_for_select
+      # inclusion_source = genre_for_select
+      genre_for_select.map { |genre, id| [genre.to_s, id] }
     when :decade
       inclusion_source = DECADES
+      DECADES.map { |label, value| [label, value] }
     when :runtime
       inclusion_source = RUNTIMES
+      RUNTIMES.map { |label, value| [label, value] }
     end
   end
 end

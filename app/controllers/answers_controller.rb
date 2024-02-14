@@ -13,9 +13,16 @@ class AnswersController < ApplicationController
     @answer = Answer.new(answer_params)
     @answer.question = @question
 
+    if params[:answer][:content].is_a?(Array)
+      @answer.content = params[:answer][:content].join(" ") # Assign last element of array
+    else
+      @answer.content = params[:answer][:content] # Assign full string
+    end
+
+    @answer.save
+
     # as we have no validators on answer the save will never fail
     # so we don't need an if statement
-    @answer.save
 
     if @next_question
       redirect_to new_question_answer_path(@next_question)
@@ -47,7 +54,7 @@ class AnswersController < ApplicationController
   private
 
   def answer_params
-    params.require(:answer).permit(:content)
+    params.require(:answer).permit(content: [])
   end
 
   def set_questionnaire

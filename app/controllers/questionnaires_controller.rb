@@ -88,13 +88,11 @@ class QuestionnairesController < ApplicationController
   def search_by_movie_id(movie_ids)
     @movies = []
     # Debug user answers
-    puts "ANSWERS: Genre: #{@answers[0].content} Decade: #{@answers[1].content} Director: #{@answers[2].content} Actor: #{@answers[3].content} Runtime_max: #{@answers[4].content} "
     movie_ids.each do |id|
       # Returns movies with main data
       api_key = ENV['TMDB_KEY']
       url = URI("https://api.themoviedb.org/3/movie/#{id}?language=en-US")
       @movie = search_setup(url, api_key)
-
 
       # Returns credits (cast and crew)
       url_crew = URI("https://api.themoviedb.org/3/movie/#{id}/credits?language=en-US")
@@ -106,8 +104,8 @@ class QuestionnairesController < ApplicationController
       director = @crew.find { |member| member['job'] == "Director" }
       @movie['director'] = director['name'] if director
       # to be refactored with loop/check if exists (not working for documentaries)
-      @movie['actor_first'] = result['cast'][0]['name']
-      @movie['actor_second'] = result['cast'][1]['name']
+      @movie['actor_first'] = result['cast'][0]['name'] if result['cast'].present?
+      @movie['actor_second'] = result['cast'][1]['name'] if result['cast'].present?
       @movie['poster_path'] = "https://image.tmdb.org/t/p/w342#{@movie['poster_path']}"
 
       # Weight each user criteria
@@ -123,6 +121,7 @@ class QuestionnairesController < ApplicationController
       # see complete list of movies (not only 3 first)
       complete_list(@movie)
     end
+    puts "ANSWERS: Genre: #{@answers[0].content} Decade: #{@answers[1].content} Director: #{@answers[2].content} Actor: #{@answers[3].content} Runtime_max: #{@answers[4].content} "
     @movies.sort_by.with_index { |movie, index| [-movie['counter'], index] }
   end
 
@@ -146,7 +145,7 @@ class QuestionnairesController < ApplicationController
 
   def genre_id
     if @answers[0].content.present?
-      @answers[0].content
+      @answers[0].content.gsub(/(?<=\S)\s+/, ',')
     else
       35
     end

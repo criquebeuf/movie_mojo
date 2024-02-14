@@ -130,7 +130,7 @@
 <!------Left Card--------->
 
   <div class="row">
-    <div class="col my-5 mx-2 result-movie-wrapper" data-controller="results">
+    <div class="col my-5 mx-2 result-movie-wrapper" data-controller="results" data-results-user-value="<%= user_signed_in? %>">
       <div class="result-movie-card <%= user_signed_in? ? "secondary-signed-up" : "secondary" %>" <%="data-bs-toggle=modal data-bs-target=#second"if user_signed_in?%>  data-action="mouseover->results#mouseEnters mouseleave->results#mouseLeaves">
         <% if !user_signed_in? %>
         <div id="revealText" data-results-target="revealText">
@@ -170,7 +170,7 @@
 
 <!------Right Card--------->
 
-  <div class="col my-5 mx-2 result-movie-wrapper" data-controller="results" <%="data-bs-toggle=modal data-bs-target=#third"if user_signed_in?%>>
+  <div class="col my-5 mx-2 result-movie-wrapper" data-controller="results" data-results-user-value="<%= user_signed_in? %>" <%="data-bs-toggle=modal data-bs-target=#third"if user_signed_in?%>>
     <div class="result-movie-card <%= user_signed_in? ? "secondary-signed-up" : "secondary" %>" data-results-target="card" data-action="mouseover->results#mouseEnters mouseleave->results#mouseLeaves">
       <% if !user_signed_in? %>
       <div id="revealText" data-results-target="revealText">
