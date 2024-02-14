@@ -68,6 +68,11 @@ class QuestionnairesController < ApplicationController
     JSON.parse(response.read_body)
   end
 
+  def popular_movies
+    # Error Handling Path: returns 10 current popular movies if no results found
+    # TO DO
+  end
+
   def search_main_params
     # Returns an array of movie_ids based on basic search (date, genre etc.)
     api_key = ENV['TMDB_KEY']
@@ -147,7 +152,9 @@ class QuestionnairesController < ApplicationController
     if @answers[0].content.present?
       @answers[0].content.gsub(/(?<=\S)\s+/, ',')
     else
-      35
+      # select randomly one of this popular genres (ex: horror excluded)
+      genres = [28, 12, 35, 10751, 9648, 10749, 878]
+      genres.sample
     end
     # genres_id.join(",") # to be added when transformed into multiple select!
   end

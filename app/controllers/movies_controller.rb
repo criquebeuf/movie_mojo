@@ -22,9 +22,10 @@ class MoviesController < ApplicationController
     end
   end
 
-  def update
-    @movie = Movie.find(params[:id])
-    @movie.update(movie_params)
+
+  def index
+    @movies = Movie.all
+    @watchlist_movies = current_user.watchlist.movies if current_user.watchlist.present?
   end
 
   private

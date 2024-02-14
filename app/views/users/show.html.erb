@@ -29,6 +29,7 @@
             <p class="watchlist-card-description">
               <%= movie.movie.overview %><br>
             </p>
+
             <p class="pt-3">My rating: </p>
             <div class="">
               <%= simple_form_for [movie, @rating], {data: { controller: "form-submit" } } do |f| %>
@@ -36,6 +37,7 @@
                 <span class="d-none"><%= f.submit %></span>
               <% end %>
             </div>
+
           </div>
         </div>
       </div>

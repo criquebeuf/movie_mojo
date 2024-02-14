@@ -1,6 +1,10 @@
   <div class="container my-5">
 
+  <% if @movies.first.nil? || @movies.second.nil? || @movies.third.nil? %>
+  # TODO
+  No movies found
 
+  <% else %>
   <!-- Modal main card-->
 
   <div class="modal-container">
@@ -137,9 +141,9 @@
           <button class="visitor-button" data-results-target="button">
             <%= link_to "Sign up!", new_user_registration_path, class:"text-decoration-none"%>
           </button>
-          <p>never see the same movie twice, get more personalized recommendations based on your previous picks!</p>
+          <p>Never see the same movie twice, get more personalized recommendations based on your previous picks!</p>
           <p>
-            <button class="revealButton" <%="data-bs-toggle=modal data-bs-target=#second"if !user_signed_in?%> data-results-target="revealButton" data-action="click->results#revealCard">show movie anyway</button>
+            <button class="revealButton" <%="data-bs-toggle=modal data-bs-target=#second"if !user_signed_in?%> data-results-target="revealButton" data-action="click->results#revealCard">Show movie anyway</button>
           </p>
         </div>
         <% end %>
@@ -177,9 +181,9 @@
         <button class="visitor-button" data-results-target="button">
           <%= link_to "Sign up!", new_user_registration_path, class:"text-decoration-none"%>
         </button>
-        <p>never see the same movie twice, get more personalized recommendations based on your previous picks!</p>
+        <p>Never see the same movie twice, get more personalized recommendations based on your previous picks!</p>
         <p>
-          <button class="revealButton" data-results-target="revealButton" data-action="click->results#revealCard" <%="data-bs-toggle=modal data-bs-target=#third"if !user_signed_in?%>>show movie anyway</button>
+          <button class="revealButton" data-results-target="revealButton" data-action="click->results#revealCard" <%="data-bs-toggle=modal data-bs-target=#third"if !user_signed_in?%>>Show movie anyway</button>
         </p>
       </div>
        <% end %>
@@ -201,5 +205,9 @@
       </div>
     </div>
   </div>
+
+  <% end %>
+
+
 
 </div>
