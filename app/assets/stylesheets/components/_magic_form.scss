@@ -226,7 +226,7 @@ $transition_time: 500ms;
 }
 
 .tag-selector:checked + label {
-  background-color: $blue;
+  background-color: $yellow;
   color: white;
 }
 
@@ -238,9 +238,7 @@ $transition_time: 500ms;
   color: white;
 }
 
-
 .form-check-label:hover {
   background-color: $yellow;
   transform: translate(5px, -5px);
-  /* Add more hover styles as needed */
 }

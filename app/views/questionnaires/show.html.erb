@@ -1,10 +1,11 @@
   <div class="container my-5">
 
-  <% if @movies.first.nil? || @movies.second.nil? || @movies.third.nil? %>
-  # TODO
-  No movies found
+<div class="d-flex justify-content-center">
+  <% if @movie_ids.count < 3 %>
+  <p>We see you have unique tastes! We haven't found your exact match yet, but we think you might enjoy these!
+  <% end %>
+</div>
 
-  <% else %>
   <!-- Modal main card-->
 
   <div class="modal-container">
@@ -207,7 +208,6 @@
     </div>
   </div>
 
-  <% end %>
 
 
 
