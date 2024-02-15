@@ -4,4 +4,4 @@ meta_title: "MovieMojo - Quit overthinking your movie choice and start enjoying 
 
 meta_description: "Discover your perfect movie match with MovieMojo! Answer 5 simple questions and get 3 tailored movie suggestions to streamline your selection process. Say goodbye to endless browsing and hello to instant movie enjoyment with MovieMojo!"
 
-meta_image: "/app/assets/images/meta_image.png" # should exist in `app/assets/images/`
+meta_image: "meta_image.png" # should exist in `app/assets/images/`
