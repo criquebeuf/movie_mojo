@@ -26,9 +26,9 @@
             <i class="fa-solid fa-arrow-left-long"></i>
           <% end %>
         <% end %>
-
         <% if Question::QUESTIONS.key(@question.content) == :runtime %>
-          <span data-action='click->loader#loadingPage'><%= f.button :submit, "See results", style: "width: 140px" %></span>
+      <span data-action='click->loader#loadingPage' class="animated-button">
+      <%= f.submit "See results", style: "width: 140px; display: none;" %>See results</span>
         <% else %>
           <%= button_tag type: "submit", class: "btn fs-6", style: "width: 100px; margin-left: 30px;", data: { action: "click->question#next" } do %>
             <i class="fa-solid fa-arrow-right-long"></i>

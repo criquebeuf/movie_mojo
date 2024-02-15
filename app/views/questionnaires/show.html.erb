@@ -138,11 +138,13 @@
     <div class="col my-5 mx-2 result-movie-wrapper" data-controller="results" data-results-user-value="<%= user_signed_in? %>">
       <div class="result-movie-card <%= user_signed_in? ? "secondary-signed-up" : "secondary" %>" <%="data-bs-toggle=modal data-bs-target=#second"if user_signed_in?%>  data-action="mouseover->results#mouseEnters mouseleave->results#mouseLeaves">
         <% if !user_signed_in? %>
-        <div id="revealText" data-results-target="revealText">
-          <button class="visitor-button" data-results-target="button">
-            <%= link_to "Sign up!", new_user_registration_path, class:"text-decoration-none"%>
-          </button>
+        <div id="revealText" data-results-target="revealText" class="d-none">
           <p>Never see the same movie twice, get more personalized recommendations based on your previous picks!</p>
+          <div data-results-target="button">
+            <%= link_to new_user_registration_path, class: "visitor-button" do %>
+              Sign up!
+            <% end %>
+          </div>
           <p>
             <button class="revealButton" <%="data-bs-toggle=modal data-bs-target=#second"if !user_signed_in?%> data-results-target="revealButton" data-action="click->results#revealCard">Show movie anyway</button>
           </p>
@@ -178,11 +180,13 @@
   <div class="col my-5 mx-2 result-movie-wrapper" data-controller="results" data-results-user-value="<%= user_signed_in? %>" <%="data-bs-toggle=modal data-bs-target=#third"if user_signed_in?%>>
     <div class="result-movie-card <%= user_signed_in? ? "secondary-signed-up" : "secondary" %>" data-results-target="card" data-action="mouseover->results#mouseEnters mouseleave->results#mouseLeaves">
       <% if !user_signed_in? %>
-      <div id="revealText" data-results-target="revealText">
-        <button class="visitor-button" data-results-target="button">
-          <%= link_to "Sign up!", new_user_registration_path, class:"text-decoration-none"%>
-        </button>
+      <div id="revealText" data-results-target="revealText" class="d-none">
         <p>Never see the same movie twice, get more personalized recommendations based on your previous picks!</p>
+        <div data-results-target="button">
+          <%= link_to new_user_registration_path, class: "visitor-button" do %>
+            Sign up!
+          <% end %>
+        </div>
         <p>
           <button class="revealButton" data-results-target="revealButton" data-action="click->results#revealCard" <%="data-bs-toggle=modal data-bs-target=#third"if !user_signed_in?%>>Show movie anyway</button>
         </p>

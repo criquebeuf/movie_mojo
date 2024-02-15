@@ -20,7 +20,15 @@
 
   <div class="row my-4">
     <h2 class="text-center my-3">My Movie Collection</h2>
-    <% @user.watched_movies.each do |movie| %>
+      <%= form_with url: user_path(current_user), method: :get, class: "d-flex justify-content-center mb-4 pb-4" do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control-personalized",
+            placeholder: "Search one of your movies!"
+        %>
+      <span class= "d-none"><%= submit_tag "Search", name: "", class: "magic-form-button-users" %></span>
+      <% end %>
+    <% @watched_movies.each do |movie| %>
       <div class="col d-flex justify-content-center my-3 mx-2">
         <div id="watchlist-card-id" class="watchlist-card">
           <img class="poster" src=<%= movie.movie.poster_path%>>
