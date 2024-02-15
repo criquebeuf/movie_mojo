@@ -1,5 +1,5 @@
 <div class="container mt-3 position-relative" data-controller='loader'>
-  <div class="magic-form-answers neat-screen blurry-screen <%= 'previous' if params[:previous] %>", data-controller="question">
+  <div class="magic-form-answers neat-screen blurry-screen <%= 'previous' if params[:previous] %>", data-controller="question" data-question-qindex-value=<%= @question_index %>>
     <h2><%= @question.content %></h2>
     <%= simple_form_for [@question, @answer] do |f| %>
       <% if Question::QUESTIONS.key(@question.content) == :decade || Question::QUESTIONS.key(@question.content) == :runtime %>
@@ -29,8 +29,17 @@
           <%= f.button :submit, "→", style: "width: 100px; margin-left: 30px;", data: { action: "click->question#next" } %>
         <% end %>
       </div>
-    </div>
+      <div class="d-flex justify-content-center mt-4">
+        <div data-question-target="fill">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
     <% end %>
+  </div>
 
   <div class="spinner d-none" data-loader-target='spinning'>
     <span>L</span>
