@@ -1,10 +1,10 @@
-  <div class="container">
+<div class="container">
 
-<div class="d-flex justify-content-center">
-  <% if @movie_ids.count < 3 %>
-  <p>We see you have unique tastes! We haven't found your exact match yet, but we think you might enjoy these!
-  <% end %>
-</div>
+  <div class="d-flex justify-content-center">
+    <% if @movie_ids.count < 3 %>
+    <p>We see you have unique tastes! We haven't found your exact match yet, but we think you might enjoy these!
+    <% end %>
+  </div>
 
   <!-- Modal main card-->
 
@@ -134,8 +134,8 @@
 
 <!------Left Card--------->
 
-  <div class="row">
-    <div class="col my-5 mx-2 result-movie-wrapper" data-controller="results" data-results-user-value="<%= user_signed_in? %>">
+  <div class="row justify-content-center">
+    <div class="col my-5 mx-2 result-movie-wrapper d-flex justify-content-center" data-controller="results" data-results-user-value="<%= user_signed_in? %>">
       <div class="result-movie-card <%= user_signed_in? ? "secondary-signed-up" : "secondary" %>" <%="data-bs-toggle=modal data-bs-target=#second"if user_signed_in?%>  data-action="mouseover->results#mouseEnters mouseleave->results#mouseLeaves">
         <% if !user_signed_in? %>
         <div id="revealText" data-results-target="revealText" class="d-none">
@@ -159,7 +159,7 @@
 
 <!------Middle Card--------->
 
-  <div class="col my-3">
+  <div class="col my-3 d-flex justify-content-center">
     <div class="result-movie-card first-signed-up d-flex align-items-start flex-column" data-bs-toggle="modal" data-bs-target="#first" style="background-image:url(<%= @movies.first['poster_path']%>); background-size: cover; background-position: center;">
       <h2 class="mx-3 my-3 py-2"><%= @movies.first['title']%> (<%= @movies.first['release_date'][0, 4]%>)</h2>
       <div class="movie-info text-start mt-auto mx-3">
@@ -177,7 +177,7 @@
 
 <!------Right Card--------->
 
-  <div class="col my-5 mx-2 result-movie-wrapper" data-controller="results" data-results-user-value="<%= user_signed_in? %>" <%="data-bs-toggle=modal data-bs-target=#third"if user_signed_in?%>>
+  <div class="col my-5 mx-2 result-movie-wrapper d-flex justify-content-center" data-controller="results" data-results-user-value="<%= user_signed_in? %>" <%="data-bs-toggle=modal data-bs-target=#third"if user_signed_in?%>>
     <div class="result-movie-card <%= user_signed_in? ? "secondary-signed-up" : "secondary" %>" data-results-target="card" data-action="mouseover->results#mouseEnters mouseleave->results#mouseLeaves">
       <% if !user_signed_in? %>
       <div id="revealText" data-results-target="revealText" class="d-none">
@@ -210,8 +210,5 @@
       </div>
     </div>
   </div>
-
-
-
 
 </div>

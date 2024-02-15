@@ -1,6 +1,9 @@
+$width: 342px;
+$height: 513px;
+
 .result-movie-card {
-  height: 500px;
-  width: 350px;
+  height: $height;
+  width: $width;
   background-size: cover;
   color: white;
   font-weight: bolder;
@@ -30,8 +33,8 @@
 
     .overlay {
       background-size: cover;
-      width: 350px;
-      height: 500px;
+      width: $width;
+      height: $height;
       position: absolute;
       filter: blur(12px);
       background-color: $blue;
@@ -78,8 +81,8 @@
 
   .overlay {
     background-size: cover;
-    width: 350px;
-    height: 500px;
+    width: $width;
+    height: $height;
     filter: blur(0px);
 
     .hidden {
