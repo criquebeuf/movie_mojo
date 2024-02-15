@@ -1,7 +1,7 @@
 class WatchedMovie < ApplicationRecord
   belongs_to :user
   belongs_to :movie
-  has_one :rating
+  has_one :rating, dependent: :destroy
 
   validates :movie, uniqueness: { scope: :user }
 
