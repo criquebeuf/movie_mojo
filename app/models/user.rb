@@ -10,15 +10,15 @@ class User < ApplicationRecord
 
   before_create :assign_avatar
 
-  def avatar
-    if super.nil?
-      assign_avatar
-      save
-      return super
-    else
-      super
-    end
-  end
+  # def avatar
+  #   if super.nil?
+  #     assign_avatar
+  #     save
+  #     return super
+  #   else
+  #     super
+  #   end
+  # end
 
   private
 
@@ -31,6 +31,4 @@ class User < ApplicationRecord
     image_files = Dir.glob("#{folder_path}/*.png")
     image_files.sample.sub("#{Rails.root}/app/assets/images/", "")
   end
-
-
 end
