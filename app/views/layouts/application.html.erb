@@ -75,8 +75,8 @@
                 <label class="for-dropdown" for="dropdown"><i class="uil fa-solid fa-arrow-down fs-4 me-1"></i><%= image_tag current_user.avatar, class: "avatar" %></label>
                 <div class="section-dropdown">
                   <%# <a href="#">Dropdown Link <i class="uil uil-arrow-right"></i></a> %>
-                  <%= link_to "Dashboard <i class='fa-regular fa-address-card' style='color: #ffffff;'></i>".html_safe, user_path(current_user) %></i>
-                  <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "" do %>
+                  <%= link_to "Dashboard <i class='fa-regular fa-address-card' style='color: #ffffff;'></i>".html_safe, user_path(current_user), class: "dropdown-link" %></i>
+                  <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-link" do %>
                     Log out <i class="fa-solid fa-right-from-bracket"></i>
                   <% end %>
                 </div>
