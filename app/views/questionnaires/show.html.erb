@@ -21,7 +21,7 @@
                 <% end %></div>
               <div class="modal-infos">
               <p><strong> Directed by </strong> <%= @movies.first['director']%></p>
-              <p><strong> Cast: </strong><%= @movies.first['actor_first']%>, <%= @movies.first['actor_second']%></p>
+              <p><strong> Starring </strong><%= @movies.first['actor_first']%>, <%= @movies.first['actor_second']%></p>
               <p><strong><%= @movies.first['runtime']%> minutes</strong></p></div>
               <br>
             <p class="overview-text"><%= @movies.first['overview']%></p>
@@ -38,7 +38,7 @@
             </div>
             <% else %>
               <div class="d-flex justify-content-center button-container">
-                <%= link_to "I'm watching this", new_user_registration_path, class: "button-submit"%>
+                <%= link_to "I'm watching this", new_user_registration_path, class: "button-submit" %>
               </div>
             <% end %>
           </div>
@@ -64,7 +64,7 @@
                 <% end %></div></p>
                 <div class="modal-infos">
                 <p><strong> Directed by</strong> <%= @movies.second['director']%></p>
-                <p><strong> Cast: </strong><%= @movies.second['actor_first']%>, <%= @movies.second['actor_second']%></p>
+                <p><strong> Starring </strong><%= @movies.second['actor_first']%>, <%= @movies.second['actor_second']%></p>
                 <p><strong><%= @movies.second['runtime']%> minutes</strong></p></div>
                 <br>
               <p class="overview-text"><%= @movies.second['overview']%></p>
@@ -106,7 +106,7 @@
                 <% end %></div></p>
                 <div class="modal-infos">
                 <p><strong> Directed by </strong><%= @movies.third['director']%></p>
-                <p><strong> Cast: </strong><%= @movies.third['actor_first']%>, <%= @movies.third['actor_second']%></p>
+                <p><strong> Starring </strong><%= @movies.third['actor_first']%>, <%= @movies.third['actor_second']%></p>
                 <p><strong><%= @movies.third['runtime']%> minutes</strong></p> </div>
                 <br>
               <p class="overview-text"><%= @movies.third['overview']%></p>
