@@ -7,7 +7,7 @@ class WatchedMovie < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_title_and_overview,
-  against: [ :title, :overview ],
+  against: [ :title, :overview, :director, :actor_first, :actor_second, :genres ],
   using: {
     tsearch: { prefix: true }
   }
