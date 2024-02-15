@@ -10,9 +10,8 @@ class RatingsController < ApplicationController
       @rating.watched_movie = @movie
       @rating.user = current_user
     end
-    if @rating.save
-      redirect_to user_path(current_user)
-    else
+    if !@rating.save
+      # redirect_to user_path(current_user)
       flash[:alert] = "Something went wrong"
     end
   end
