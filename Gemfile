@@ -82,4 +82,5 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "pry-byebug"
+# this fucks up your console! take care :)
+# gem "pry-byebug"
