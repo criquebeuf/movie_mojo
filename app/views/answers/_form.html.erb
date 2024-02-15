@@ -18,15 +18,21 @@
 
       <div class="d-flex justify-content-center w-100" style="margin-top: 40px">
         <% unless @previous_answer %>
-          <%= link_to "←", root_path, class: "magic-form-button-users-back btn" %>
+          <%= link_to root_path, class: "magic-form-button-users-back btn" do %>
+            <i class="fa-solid fa-arrow-left-long"></i>
+          <% end %>
         <% else %>
-          <%= link_to "←", edit_question_answer_path(@previous_question, @previous_answer, previous: true), class: "magic-form-button-users-back btn", data: { action: "click->question#previous" } %>
+          <%= link_to edit_question_answer_path(@previous_question, @previous_answer, previous: true), class: "magic-form-button-users-back btn", data: { action: "click->question#previous" } do %>
+            <i class="fa-solid fa-arrow-left-long"></i>
+          <% end %>
         <% end %>
 
         <% if Question::QUESTIONS.key(@question.content) == :runtime %>
           <span data-action='click->loader#loadingPage'><%= f.button :submit, "See results", style: "width: 140px" %></span>
         <% else %>
-          <%= f.button :submit, "→", style: "width: 100px; margin-left: 30px;", data: { action: "click->question#next" } %>
+          <%= button_tag type: "submit", class: "btn fs-6", style: "width: 100px; margin-left: 30px;", data: { action: "click->question#next" } do %>
+            <i class="fa-solid fa-arrow-right-long"></i>
+          <% end %>
         <% end %>
       </div>
       <div class="d-flex justify-content-center mt-4">

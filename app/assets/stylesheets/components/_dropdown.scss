@@ -95,7 +95,7 @@
   pointer-events: none;
   transform: translateY(20px);
   transition: all 200ms linear;
-  a:hover{
+  .dropdown-link:hover{
     background-color: $yellow;
   }
 }
@@ -136,7 +136,7 @@
 //   border-bottom: 8px solid #fff;
 // }
 
-a {
+.dropdown-link {
   position: relative;
   color: #fff;
   transition: all 200ms linear;
@@ -159,11 +159,11 @@ a {
   -ms-flex-pack: distribute;
 }
 
-a:hover {
+.dropdown-link:hover {
   color: white;
 }
 
-a .uil {
+.dropdown-link .uil {
   font-size: 22px;
 }
 
