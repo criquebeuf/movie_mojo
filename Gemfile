@@ -83,4 +83,4 @@ group :test do
 end
 
 # this fucks up your console! take care :)
-gem "pry-byebug"
+# gem "pry-byebug"
