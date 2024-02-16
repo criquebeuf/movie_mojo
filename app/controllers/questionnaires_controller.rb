@@ -8,15 +8,13 @@ class QuestionnairesController < ApplicationController
 #  before_action :authenticate_user!, except: [:new, :create]
   before_action :set_questionnaire, only: [:show]
   before_action :set_first_question, only: [:create, :show]
+  before_action :set_answers, only: [:show]
 
   def index
     @questionnaires = Questionnaire.all
   end
 
   def show
-    # Get the five answers
-    @answers = @questionnaire.answers
-
     # search 1: based on main criteria => return movie_id
     @movie_ids = search_main_params
     @popular_movies_ids = popular_movies
@@ -182,6 +180,17 @@ class QuestionnairesController < ApplicationController
   def vote_average
     # Temp value below
     6.5
+  end
+
+  def set_answers
+    questions = @questionnaire.questions
+    @answers = []
+    @answers << questions.find{ |question| question.content == Question::QUESTIONS[:genre] }.answer
+    @answers << questions.find{ |question| question.content == Question::QUESTIONS[:decade] }.answer
+    @answers << questions.find{ |question| question.content == Question::QUESTIONS[:director] }.answer
+    @answers << questions.find{ |question| question.content == Question::QUESTIONS[:actor] }.answer
+    @answers << questions.find{ |question| question.content == Question::QUESTIONS[:runtime] }.answer
+    @answers
   end
 
   ## END: ALGORYTHM METHODS
