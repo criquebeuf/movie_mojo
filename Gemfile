@@ -57,6 +57,9 @@ gem "pg_search"
 # Gems added by the team
 gem "faker"
 
+# update cors policy
+gem "rack-cors"
+
 group :development, :test do
   gem "dotenv-rails"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
